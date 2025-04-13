@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+ 
+  <style>
+    .sidebar-transition {
+      transition: transform 300ms ease-in-out;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-gray-100 h-full">
+  <!-- Mobile sidebar backdrop -->
+  <div id="sidebarBackdrop" class="fixed inset-0 bg-gray-600 bg-opacity-75 z-20 hidden md:hidden"></div>
+  
+  <!-- Sidebar -->
+  <aside id="sidebar" class="fixed inset-y-0 left-0 z-30 w-64 bg-white border-r border-gray-200 sidebar-transition -translate-x-full md:translate-x-0">
+    <div class="h-full flex flex-col">
+      <div class="h-16 flex items-center justify-between px-4 border-b border-gray-200">
+        <a href="/" class="flex items-center space-x-2">
+          <div class="h-8 w-8 rounded-md flex items-center justify-center">
+            <span class="text-white font-bold"></span>
+          </div>
+          <span class="text-xl font-bold text-gray-800">CRMSystem</span>
+        </a>
+        <button id="closeSidebar" class="md:hidden text-gray-500 hover:text-gray-600">
+          <i data-lucide="x" class="h-6 w-6"></i>
+        </button>
+      </div>
+      
+      <div class="flex-1 overflow-auto py-4 px-3">
+        <nav class="space-y-1">
+          <a href="./customer.html" class="flex items-center px-3 py-2 bg-blue-50 text-blue-700 rounded-md">
+            <i  class="h-5 w-5 mr-3"></i>
+            Dashboard
+          </a>
+          <a href="./Orders.html" class="flex items-center px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">
+            <i  class="h-5 w-5 mr-3"></i>
+            Orders
+          </a>
+          <a href="./invoice.html" class="flex items-center px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">
+            <i  class="h-5 w-5 mr-3"></i>
+            Invoices
+          </a>
+          <a href="./support.html" class="flex items-center px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">
+            <i  class="h-5 w-5 mr-3"></i>
+            Support
+          </a>
+          
+          <a href="./customerset.php" class="flex items-center px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">
+            <i  class="h-5 w-5 mr-3"></i>
+            Settings
+          </a>
+        </nav>
+      </div>
+      
+      <div class="border-t border-gray-200 p-4">
+        <div class="flex items-center">
+          <div class="h-10 w-10 rounded-full  flex items-center justify-center mr-3">
+            <span class="font-medium text-teal-700"></span>
+          </div>
+          
+        </div>
+        <div class="mt-4 flex items-center justify-between">
+         
+          <a href="./logout.php">
+          <button id="logoutButton" class=" text-red-400 text-sm font-medium text-gray-700 hover:text-gray-900 px-3 py-1 rounded-md hover:bg-gray-100">
+            Logout
+          </button>
+        </a>
+        </div>
+      </div>
+    </div>
+  </aside>
+  
+  <!-- Main content -->
+  <div class="md:pl-64">
+    <!-- Top navbar -->
+    <header class="bg-white shadow-sm">
+      <div class="flex items-center justify-between h-16 px-4">
+        <div class="flex items-center md:hidden">
+          <button id="openSidebar" class="text-gray-500 hover:text-gray-600">
+            <i data-lucide="menu" class="h-6 w-6"></i>
+          </button>
+        </div>
+        
+        <div class="flex-1 px-4 md:px-0">
+          <div class="relative max-w-md">
+          
+        
+          </div>
+        </div>
+        
+        <div class="flex items-center">
+          
+          <div class="border-l border-gray-200 h-6 mx-4"></div>
+          <a href="./customer.html" class="flex items-center text-gray-700 hover:text-gray-900">
+            <i data-lucide="help-circle" class="h-5 w-5 mr-1"></i>
+            <span>Help</span>
+          </a>
+        </div>
+        <select id="languageSelect" class="px-2 py-1 border rounded text-sm">
+          <option value="en">English</option>
+          <option value="hi">Hindi</option>
+          <option value="es">Spanish</option>
+          <option value="fr">French</option>
+          <option value="de">German</option>
+          <option value="te">Telugu</option>
+          <option value="ta">Tamil</option>
+          <option value="ml">Malayalam</option>
+          <option value="ja">Japanese</option>
+          <option value="it">Italian</option>
+        </select>
+      </div>
+    </header>
+    
+    <!-- Main content area -->
+    <main class="p-6">
+      <div class="mb-8">
+        <h1 class="text-2xl font-bold text-gray-900">Customer Dashboard</h1>
+        <p class="mt-1 text-gray-600">Welcome back </p>
+      </div>
+      
+      <!-- Account Overview -->
+      <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-6 mb-8">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+          <div>
+            <h2 class="text-lg font-semibold text-gray-900">Account Overview</h2>
+            <p class="mt-1 text-gray-600">Premium Plan - Active</p>
+          </div>
+          <div class="mt-4 md:mt-0 flex flex-wrap gap-3">
+            <button class="border border-gray-300 bg-white hover:bg-gray-50 text-gray-700 py-2 px-4 rounded-md flex items-center">
+              <i data-lucide="credit-card" class="h-4 w-4 mr-2"></i>
+              Manage Billing
+            </button>
+            <a href="./support.html">
+            <button class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md flex items-center">
+              <i data-lucide="help-circle" class="h-4 w-4 mr-2"></i>
+              Get Support
+            </button>
+          </a>
+          </div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+          <div class="bg-gray-50 p-4 rounded-md border border-gray-200">
+            <p class="text-sm text-gray-500">Next Billing Date</p>
+            <p class="mt-1 font-medium">May 15, 2025</p>
+          </div>
+          <div class="bg-gray-50 p-4 rounded-md border border-gray-200">
+            <p class="text-sm text-gray-500">Subscription Status</p>
+            <div class="mt-1 flex items-center">
+              <i data-lucide="check-circle" class="h-4 w-4 text-green-500 mr-1"></i>
+              <span class="font-medium">Active</span>
+            </div>
+          </div>
+          <div class="bg-gray-50 p-4 rounded-md border border-gray-200">
+            <p class="text-sm text-gray-500">Payment Method</p>
+            <p class="mt-1 font-medium">Visa •••• 4242</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Recent Orders and Support -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div class="lg:col-span-2">
+          <div class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden">
+            <div class="px-6 py-4 border-b border-gray-100 flex justify-between items-center">
+              <h2 class="font-semibold text-gray-900">Recent Orders</h2>
+              <a href="./customer.html" class="text-sm text-blue-600 hover:text-blue-800">
+                View All
+              </a>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="w-full">
+                <thead class="bg-gray-50 text-left">
+                  <tr>
+                    <th class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">Order ID</th>
+                    <th class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+                    <th class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                    <th class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">Amount</th>
+                    <th class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider"></th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                  <tr>
+                    <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-900">ORD-12345</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-gray-500">Apr 5, 2025</td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                      <span class="inline-flex px-2 py-1 text-xs font-medium rounded-full bg-green-100 text-green-800">
+                        Delivered
+                      </span>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-gray-500">$249.99</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-right">
+                      <a href="./customer.html" class="text-blue-600 hover:text-blue-800">
+                        View
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-900">ORD-12344</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-gray-500">Mar 28, 2025</td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                      <span class="inline-flex px-2 py-1 text-xs font-medium rounded-full bg-blue-100 text-blue-800">
+                        Shipped
+                      </span>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-gray-500">$129.50</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-right">
+                      <a href="" class="text-blue-600 hover:text-blue-800">
+                        View
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-900">ORD-12343</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-gray-500">Mar 15, 2025</td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                      <span class="inline-flex px-2 py-1 text-xs font-medium rounded-full bg-yellow-100 text-yellow-800">
+                        Processing
+                      </span>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-gray-500">$599.00</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-right">
+                      <a href="/dashboard-customer" class="text-blue-600 hover:text-blue-800">
+                        View
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        
+        <div>
+          <div class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden">
+            <div class="px-6 py-4 border-b border-gray-100">
+              <h2 class="font-semibold text-gray-900">Support Tickets</h2>
+            </div>
+            <div class="divide-y divide-gray-100">
+              <div class="p-4">
+                <div class="flex justify-between">
+                  <span class="text-sm font-medium text-gray-500">TKT-7890</span>
+                  <span class="px-2 py-1 text-xs font-medium rounded-full bg-blue-100 text-blue-800">
+                    Open
+                  </span>
+                </div>
+                <h3 class="font-medium text-gray-900 mt-1">Question about billing</h3>
+                <div class="flex justify-between items-center mt-2">
+                  <span class="text-xs text-gray-500">Updated 1 day ago</span>
+                  <a href="/dashboard-customer" class="text-sm text-blue-600 hover:text-blue-800">
+                    View
+                  </a>
+                </div>
+              </div>
+              <div class="p-4">
+                <div class="flex justify-between">
+                  <span class="text-sm font-medium text-gray-500">TKT-7889</span>
+                  <span class="px-2 py-1 text-xs font-medium rounded-full bg-gray-100 text-gray-800">
+                    Closed
+                  </span>
+                </div>
+                <h3 class="font-medium text-gray-900 mt-1">Product setup issue</h3>
+                <div class="flex justify-between items-center mt-2">
+                  <span class="text-xs text-gray-500">Updated 1 week ago</span>
+                  <a href="/dashboard-customer" class="text-sm text-blue-600 hover:text-blue-800">
+                    View
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="p-4 border-t border-gray-100">
+              <button class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md">
+                Open New Ticket
+              </button>
+            </div>
+          </div>
+          
+          <div class="bg-blue-50 rounded-lg border border-blue-100 p-6 mt-6">
+            <div class="flex items-start">
+              <div class="mr-4 mt-1">
+                <div class="h-10 w-10 bg-blue-100 rounded-full flex items-center justify-center">
+                  <i data-lucide="help-circle" class="h-6 w-6 text-blue-600"></i>
+                </div>
+              </div>
+              <div>
+                <h3 class="font-semibold text-blue-900">Need Help?</h3>
+                <p class="mt-1 text-sm text-blue-700">
+                  Our support team is available 24/7 to assist with any questions or issues.
+                </p>
+                <div class="mt-4">
+                  <a href="./support.html" >
+                  <button class="text-blue-700 border border-blue-200 bg-blue-100 hover:bg-blue-200 py-2 px-4 rounded-md">
+                    Contact Support
+                  </button>
+                </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+    
+    // DOM elements
+    const sidebar = document.getElementById('sidebar');
+    const sidebarBackdrop = document.getElementById('sidebarBackdrop');
+    const openSidebarBtn = document.getElementById('openSidebar');
+    const closeSidebarBtn = document.getElementById('closeSidebar');
+    const toggleDarkModeBtn = document.getElementById('toggleDarkMode');
+    const logoutButton = document.getElementById('logoutButton');
+    
+    // State
+    let darkMode = false;
+    
+    // Event listeners
+    openSidebarBtn.addEventListener('click', () => {
+      sidebar.classList.remove('-translate-x-full');
+      sidebar.classList.add('translate-x-0');
+      sidebarBackdrop.classList.remove('hidden');
+    });
+    
+    closeSidebarBtn.addEventListener('click', () => {
+      sidebar.classList.remove('translate-x-0');
+      sidebar.classList.add('-translate-x-full');
+      sidebarBackdrop.classList.add('hidden');
+    });
+    
+    sidebarBackdrop.addEventListener('click', () => {
+      sidebar.classList.remove('translate-x-0');
+      sidebar.classList.add('-translate-x-full');
+      sidebarBackdrop.classList.add('hidden');
+    });
+    
+    toggleDarkModeBtn.addEventListener('click', () => {
+      darkMode = !darkMode;
+      if (darkMode) {
+        document.documentElement.classList.add('dark');
+        toggleDarkModeBtn.innerHTML = '<i data-lucide="sun" class="h-5 w-5"></i>';
+      } else {
+        document.documentElement.classList.remove('dark');
+        toggleDarkModeBtn.innerHTML = '<i data-lucide="moon" class="h-5 w-5"></i>';
+      }
+      lucide.createIcons(); // Refresh icons after changing
+    });
+    
+    logoutButton.addEventListener('click', () => {
+      // Add your logout logic here
+      console.log('Logout clicked');
+      alert('Logout functionality would go here');
+    });
+  </script>
+</body>
+</html>

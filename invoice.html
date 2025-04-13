@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Formal CRM Invoice</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: #f9f9f9;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .invoice-container {
+      background: #fff;
+      border: 1px solid #ddd;
+      padding: 30px;
+      width: 100%;
+      max-width: 900px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .header, .details {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .editable {
+      border: 1px dashed #ccc;
+      padding: 5px;
+      min-width: 150px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border: 1px solid #ccc;
+    }
+
+    th {
+      background-color: #eee;
+      color: #333;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    .total {
+      text-align: right;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 8px 16px;
+      margin-top: 10px;
+      background-color: #333;
+      color: white;
+      text-decoration: none;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      margin-right: 5px;
+      font-size: 14px;
+    }
+
+    .btn:hover {
+      background-color: #555;
+    }
+
+    .actions {
+      text-align: center;
+    }
+
+    input[type="text"], input[type="number"] {
+      width: 100%;
+      padding: 6px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+
+    .signature-area {
+      margin-top: 40px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .signature-box {
+      width: 45%;
+      text-align: center;
+    }
+
+    .signature-box p {
+      margin-top: 60px;
+      border-top: 1px solid #333;
+      padding-top: 5px;
+    }
+
+    .tax-details {
+      margin-bottom: 20px;
+      text-align: right;
+    }
+
+  </style>
+</head>
+<body>
+
+<div class="invoice-container" id="invoice">
+  <h1>CRM Solutions Invoice</h1>
+
+  <div class="details">
+    <div><strong>Date:</strong> <span id="invoiceDate"></span></div>
+    <div><strong>Invoice No:</strong> <span id="invoiceNumber"></span></div>
+  </div>
+
+  <div class="header">
+    <div>
+      <strong>From:</strong>
+      <div class="editable" contenteditable="true">CRM Solutions Pvt Ltd.<br>support@crm-solutions.com<br>+91 98765 43210</div>
+    </div>
+    <div>
+      <strong>To:</strong>
+      <div class="editable" contenteditable="true">John Doe<br>john.doe@example.com<br>+91 91234 56789</div>
+    </div>
+  </div>
+
+  <table id="invoiceTable">
+    <thead>
+      <tr>
+        <th>Item Description</th>
+        <th>Quantity</th>
+        <th>Unit Price (₹)</th>
+        <th>Total (₹)</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><input type="text" value="CRM Subscription Pro" /></td>
+        <td><input type="number" value="1" min="1" oninput="calculateTotal()" /></td>
+        <td><input type="number" value="5000" min="0" oninput="calculateTotal()" /></td>
+        <td class="row-total">5000</td>
+        <td><button class="btn" onclick="removeRow(this)">Remove</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="tax-details">
+    <div>GST (18%): ₹<span id="gstAmount">0</span></div>
+    <div>Discount (5%): ₹<span id="discountAmount">0</span></div>
+  </div>
+
+  <p class="total">Grand Total: ₹<span id="grandTotal">5000</span></p>
+
+  <div class="actions">
+    <button class="btn" onclick="addRow()">Add Item</button>
+    <button class="btn" onclick="calculateTotal()">Recalculate Total</button>
+    <button class="btn" onclick="generatePDF()">Export to PDF</button>
+    <button class="btn" onclick="window.print()">Print Invoice</button>
+  </div>
+
+  <div class="signature-area">
+    <div class="signature-box">
+      <strong>Signature</strong>
+      <p>Authorized Signatory</p>
+    </div>
+    <div class="signature-box">
+      <strong>Stamp</strong>
+      <p>Company Stamp</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- jsPDF CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+  // Set auto date and invoice number
+  document.getElementById('invoiceDate').textContent = new Date().toLocaleDateString();
+  document.getElementById('invoiceNumber').textContent = Math.floor(Math.random() * 900000) + 100000;
+
+  function calculateTotal() {
+    let rows = document.querySelectorAll('#invoiceTable tbody tr');
+    let grandTotal = 0;
+
+    rows.forEach(row => {
+      let qty = parseFloat(row.cells[1].querySelector('input').value) || 0;
+      let price = parseFloat(row.cells[2].querySelector('input').value) || 0;
+      let rowTotal = qty * price;
+      row.cells[3].textContent = rowTotal.toFixed(2);
+      grandTotal += rowTotal;
+    });
+
+    let gst = grandTotal * 0.18;
+    let discount = grandTotal * 0.05;
+    let finalTotal = grandTotal + gst - discount;
+
+    document.getElementById('gstAmount').textContent = gst.toFixed(2);
+    document.getElementById('discountAmount').textContent = discount.toFixed(2);
+    document.getElementById('grandTotal').textContent = finalTotal.toFixed(2);
+  }
+
+  function addRow() {
+    let tbody = document.querySelector('#invoiceTable tbody');
+    let newRow = document.createElement('tr');
+    newRow.innerHTML = `
+      <td><input type="text" value="New Item" /></td>
+      <td><input type="number" value="1" min="1" oninput="calculateTotal()" /></td>
+      <td><input type="number" value="0" min="0" oninput="calculateTotal()" /></td>
+      <td class="row-total">0</td>
+      <td><button class="btn" onclick="removeRow(this)">Remove</button></td>
+    `;
+    tbody.appendChild(newRow);
+    calculateTotal();
+  }
+
+  function removeRow(button) {
+    button.closest('tr').remove();
+    calculateTotal();
+  }
+
+  async function generatePDF() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF('p', 'pt', 'a4');
+
+    await html2canvas(document.getElementById('invoice')).then(canvas => {
+      const imgData = canvas.toDataURL('image/png');
+      const imgProps = doc.getImageProperties(imgData);
+      const pdfWidth = doc.internal.pageSize.getWidth();
+      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+      doc.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+      doc.save('Invoice.pdf');
+    });
+  }
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+</body>
+</html>

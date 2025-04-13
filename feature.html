@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRM Features</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-white">
+
+    <header>
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+          <!-- Left Section -->
+          <div class="flex items-center space-x-9 pl-10">
+            <div class="text-2xl font-bold text-blue-600">
+              <span class="text-blue-500">CRM</span>
+            </div>
+            <nav class="space-x-4">
+              <a class="text-black hover:text-pink-300 translatable" href="./index1.html">Home</a>
+              <a class="text-black hover:text-pink-300 translatable" href="./feature.html">Features</a>
+              <a class="text-black hover:text-pink-300 translatable" href="./products.html">Products</a>
+              <a class="text-black hover:text-pink-300 translatable" href="./about.html">About Us</a>
+            </nav>
+          </div>
+  
+          <!-- Right Section -->
+          <div class="flex items-center space-x-4 pr-6">
+            <!-- Language Dropdown -->
+            <select id="languageSelect" class="px-2 py-1 border rounded text-sm">
+              <option value="en">English</option>
+              <option value="hi">Hindi</option>
+              <option value="es">Spanish</option>
+              <option value="fr">French</option>
+              <option value="de">German</option>
+              <option value="te">Telugu</option>
+              <option value="ta">Tamil</option>
+              <option value="ml">Malayalam</option>
+              <option value="ja">Japanese</option>
+              <option value="it">Italian</option>
+            </select>
+  
+            <!-- Login Button -->
+            <a class="text-gray-600 hover:text-gray-900" href="./login.html">
+              <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 translatable">
+                Login
+              </button>
+            </a>
+          </div>
+        </div>
+      </header>
+  
+
+    
+  <!-- Hero Section -->
+  <section class="py-16 bg-gradient-to-r from-blue-500 to-indigo-600">
+    <div class="container mx-auto px-4">
+      <div class="text-center text-white">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+          Powerful Features for Modern Businesses
+        </h1>
+        <p class="text-xl max-w-3xl mx-auto mb-8 opacity-90">
+          Discover how our CRM system can transform your customer relationships and streamline your business operations
+        </p>
+        <a href="./login.html" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-white text-blue-500 hover:bg-gray-100 h-11 px-8 py-2 text-lg">
+          Try For Free
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature Categories -->
+  <section class="py-16">
+    <div class="container mx-auto px-4">
+      <div class="w-full" data-state="active" data-orientation="horizontal">
+        <div class="flex justify-center mb-8">
+          <div class="inline-flex h-10 items-center justify-center rounded-md bg-muted p-1 text-muted-foreground w-full max-w-2xl grid grid-cols-3">
+            <button type="button" role="tab" aria-selected="true" class="inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm">
+              Core Features
+            </button>
+            <button type="button" role="tab" aria-selected="false" class="inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm">
+              Enterprise Solutions
+            </button>
+            <button type="button" role="tab" aria-selected="false" class="inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm">
+              Integrations
+            </button>
+          </div>
+        </div>
+
+        <!-- Core Features -->
+        <div data-state="active" class="mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Feature Card 1 -->
+            <div class="rounded-lg border bg-card text-card-foreground shadow-sm">
+              <div class="flex flex-col space-y-1.5 p-6">
+                <i data-lucide="users" class="h-8 w-8 text-blue-500 mb-2"></i>
+                <h3 class="text-2xl font-semibold leading-none tracking-tight">Customer Management</h3>
+                <p class="text-sm text-muted-foreground">A 360-degree view of your customers</p>
+              </div>
+              <div class="p-6 pt-0">
+                <ul class="space-y-2">
+                  <li class="flex items-start">
+                    <i data-lucide="check-circle" class="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5"></i>
+                    <span>Complete customer profiles</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i data-lucide="check-circle" class="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5"></i>
+                    <span>Interaction history tracking</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i data-lucide="check-circle" class="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5"></i>
+                    <span>Customizable data fields</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Feature Card 2 -->
+            <div class="rounded-lg border bg-card text-card-foreground shadow-sm">
+              <div class="flex flex-col space-y-1.5 p-6">
+                <i data-lucide="bar-chart-3" class="h-8 w-8 text-blue-500 mb-2"></i>
+                <h3 class="text-2xl font-semibold leading-none tracking-tight">Advanced Analytics</h3>
+                <p class="text-sm text-muted-foreground">Actionable insights for informed decisions</p>
+              </div>
+              <div class="p-6 pt-0">
+                <ul class="space-y-2">
+                  <li class="flex items-start">
+                    <i data-lucide="check-circle" class="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5"></i>
+                    <span>Real-time dashboards</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i data-lucide="check-circle" class="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5"></i>
+                    <span>Custom report builder</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i data-lucide="check-circle" class="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5"></i>
+                    <span>Trend analysis and forecasting</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Feature Card 3 -->
+            <div class="rounded-lg border bg-card text-card-foreground shadow-sm">
+              <div class="flex flex-col space-y-1.5 p-6">
+                <i data-lucide="message-square" class="h-8 w-8 text-blue-500 mb-2"></i>
+                <h3 class="text-2xl font-semibold leading-none tracking-tight">Communication Tools</h3>
+                <p class="text-sm text-muted-foreground">Stay connected with customers and team</p>
+              </div>
+              <div class="p-6 pt-0">
+                <ul class="space-y-2">
+                  <li class="flex items-start">
+                    <i data-lucide="check-circle" class="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5"></i>
+                    <span>Integrated email client</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i data-lucide="check-circle" class="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5"></i>
+                    <span>SMS and notification system</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i data-lucide="check-circle" class="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5"></i>
+                    <span>Communication templates</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Feature Card 4 -->
+            <div class="rounded-lg border bg-card text-card-foreground shadow-sm">
+              <div class="flex flex-col space-y-1.5 p-6">
+                <i data-lucide="globe" class="h-8 w-8 text-blue-500 mb-2"></i>
+                <h3 class="text-2xl font-semibold leading-none tracking-tight">Multilingual Support</h3>
+                <p class="text-sm text-muted-foreground">Break language barriers with ease</p>
+              </div>
+              <div class="p-6 pt-0">
+                <ul class="space-y-2">
+                  <li class="flex items-start">
+                    <i data-lucide="check-circle" class="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5"></i>
+                    <span>Support for multiple languages</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i data-lucide="check-circle" class="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5"></i>
+                    <span>Automatic translation features</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i data-lucide="check-circle" class="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5"></i>
+                    <span>Localized interfaces</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Feature Card 5 -->
+            <div class="rounded-lg border bg-card text-card-foreground shadow-sm">
+              <div class="flex flex-col space-y-1.5 p-6">
+                <i data-lucide="zap" class="h-8 w-8 text-blue-500 mb-2"></i>
+                <h3 class="text-2xl font-semibold leading-none tracking-tight">Automation</h3>
+                <p class="text-sm text-muted-foreground">Save time with powerful automation</p>
+              </div>
+              <div class="p-6 pt-0">
+                <ul class="space-y-2">
+                  <li class="flex items-start">
+                    <i data-lucide="check-circle" class="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5"></i>
+                    <span>Workflow automation</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i data-lucide="check-circle" class="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5"></i>
+                    <span>Scheduled reports and tasks</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i data-lucide="check-circle" class="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5"></i>
+                    <span>Smart follow-up reminders</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Feature Card 6 -->
+            <div class="rounded-lg border bg-card text-card-foreground shadow-sm">
+              <div class="flex flex-col space-y-1.5 p-6">
+                <i data-lucide="lock" class="h-8 w-8 text-blue-500 mb-2"></i>
+                <h3 class="text-2xl font-semibold leading-none tracking-tight">Role-Based Access</h3>
+                <p class="text-sm text-muted-foreground">Secure and customized user experiences</p>
+              </div>
+              <div class="p-6 pt-0">
+                <ul class="space-y-2">
+                  <li class="flex items-start">
+                    <i data-lucide="check-circle" class="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5"></i>
+                    <span>Admin, staff, and customer portals</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i data-lucide="check-circle" class="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5"></i>
+                    <span>Custom permission settings</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i data-lucide="check-circle" class="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5"></i>
+                    <span>Audit logging and security</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Enterprise Solutions (hidden) -->
+        <div data-state="inactive" class="mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 hidden">
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Enterprise Feature Cards -->
+            <div class="rounded-lg border bg-card text-card-foreground shadow-sm">
+              <div class="flex flex-col space-y-1.5 p-6">
+                <i data-lucide="users" class="h-8 w-8 text-blue-500 mb-2"></i>
+                <h3 class="text-2xl font-semibold leading-none tracking-tight">Team Collaboration</h3>
+                <p class="text-sm text-muted-foreground">Seamless coordination across departments</p>
+              </div>
+              <div class="p-6 pt-0">
+                <ul class="space-y-2">
+                  <li class="flex items-start">
+                    <i data-lucide="check-circle" class="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5"></i>
+                    <span>Cross-department visibility</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i data-lucide="check-circle" class="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5"></i>
+                    <span>Shared calendars and tasks</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i data-lucide="check-circle" class="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5"></i>
+                    <span>Internal messaging system</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="rounded-lg border bg-card text-card-foreground shadow-sm">
+              <div class="flex flex-col space-y-1.5 p-6">
+                <i data-lucide="bar-chart-3" class="h-8 w-8 text-blue-500 mb-2"></i>
+                <h3 class="text-2xl font-semibold leading-none tracking-tight">Advanced Forecasting</h3>
+                <p class="text-sm text-muted-foreground">Predictive insights for strategic planning</p>
+              </div>
+              <div class="p-6 pt-0">
+                <ul class="space-y-2">
+                  <li class="flex items-start">
+                    <i data-lucide="check-circle" class="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5"></i>
+                    <span>AI-powered predictions</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i data-lucide="check-circle" class="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5"></i>
+                    <span>Market trend analysis</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i data-lucide="check-circle" class="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5"></i>
+                    <span>What-if scenario planning</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="rounded-lg border bg-card text-card-foreground shadow-sm">
+              <div class="flex flex-col space-y-1.5 p-6">
+                <i data-lucide="lock" class="h-8 w-8 text-blue-500 mb-2"></i>
+                <h3 class="text-2xl font-semibold leading-none tracking-tight">Enterprise Security</h3>
+                <p class="text-sm text-muted-foreground">Bank-grade security for your data</p>
+              </div>
+              <div class="p-6 pt-0">
+                <ul class="space-y-2">
+                  <li class="flex items-start">
+                    <i data-lucide="check-circle" class="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5"></i>
+                    <span>End-to-end encryption</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i data-lucide="check-circle" class="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5"></i>
+                    <span>Compliance with global regulations</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i data-lucide="check-circle" class="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5"></i>
+                    <span>Advanced threat protection</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Integrations (hidden) -->
+        <div data-state="inactive" class="mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 hidden">
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Integration Feature Cards -->
+            <div class="rounded-lg border bg-card text-card-foreground shadow-sm">
+              <div class="flex flex-col space-y-1.5 p-6">
+                <i data-lucide="smartphone" class="h-8 w-8 text-blue-500 mb-2"></i>
+                <h3 class="text-2xl font-semibold leading-none tracking-tight">Mobile Applications</h3>
+                <p class="text-sm text-muted-foreground">Access your CRM on the go</p>
+              </div>
+              <div class="p-6 pt-0">
+                <ul class="space-y-2">
+                  <li class="flex items-start">
+                    <i data-lucide="check-circle" class="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5"></i>
+                    <span>iOS and Android apps</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i data-lucide="check-circle" class="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5"></i>
+                    <span>Offline mode capability</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i data-lucide="check-circle" class="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5"></i>
+                    <span>Push notifications</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="rounded-lg border bg-card text-card-foreground shadow-sm">
+              <div class="flex flex-col space-y-1.5 p-6">
+                <i data-lucide="message-square" class="h-8 w-8 text-blue-500 mb-2"></i>
+                <h3 class="text-2xl font-semibold leading-none tracking-tight">Third-Party Integrations</h3>
+                <p class="text-sm text-muted-foreground">Connect with your favorite tools</p>
+              </div>
+              <div class="p-6 pt-0">
+                <ul class="space-y-2">
+                  <li class="flex items-start">
+                    <i data-lucide="check-circle" class="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5"></i>
+                    <span>Email and calendar sync</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i data-lucide="check-circle" class="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5"></i>
+                    <span>Marketing automation tools</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i data-lucide="check-circle" class="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5"></i>
+                    <span>E-commerce platforms</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="rounded-lg border bg-card text-card-foreground shadow-sm">
+              <div class="flex flex-col space-y-1.5 p-6">
+                <i data-lucide="zap" class="h-8 w-8 text-blue-500 mb-2"></i>
+                <h3 class="text-2xl font-semibold leading-none tracking-tight">API Access</h3>
+                <p class="text-sm text-muted-foreground">Build custom solutions with our API</p>
+              </div>
+              <div class="p-6 pt-0">
+                <ul class="space-y-2">
+                  <li class="flex items-start">
+                    <i data-lucide="check-circle" class="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5"></i>
+                    <span>RESTful API endpoints</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i data-lucide="check-circle" class="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5"></i>
+                    <span>Webhook capabilities</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i data-lucide="check-circle" class="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5"></i>
+                    <span>Developer documentation</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 bg-indigo-600 text-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center max-w-3xl mx-auto">
+        <h2 class="text-3xl font-bold mb-4">
+          Ready to experience these features?
+        </h2>
+        <p class="text-xl opacity-90 mb-8">
+          Join thousands of businesses already using our CRM to grow and succeed
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+          <a href="./login.html" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-white text-indigo-600 hover:bg-gray-100 h-11 px-8 py-2 text-lg">
+            Start Free Trial
+          </a>
+          <a href="./about.html" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-white bg-transparent text-white hover:bg-white/10 h-11 px-8 py-2 text-lg">
+            Learn More
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>

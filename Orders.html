@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRM System - Orders Management</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3498db',
+                        secondary: '#2980b9',
+                        accent: '#e74c3c',
+                        light: '#ecf0f1',
+                        dark: '#2c3e50',
+                        success: '#2ecc71',
+                        warning: '#f39c12',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .modal-fade-in {
+            animation: modalFadeIn 0.3s;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <div class="flex min-h-screen">
+        <!-- Sidebar -->
+        <div id="sidebarBackdrop" class="fixed inset-0 bg-gray-600 bg-opacity-75 z-20 hidden md:hidden"></div>
+  
+  <!-- Sidebar -->
+  <aside id="sidebar" class="fixed inset-y-0 left-0 z-30 w-64 bg-white border-r border-gray-200 sidebar-transition -translate-x-full md:translate-x-0">
+    <div class="h-full flex flex-col">
+      <div class="h-16 flex items-center justify-between px-4 border-b border-gray-200">
+        <a href="/" class="flex items-center space-x-2">
+          <div class="h-8 w-8 rounded-md flex items-center justify-center">
+            <span class="text-white font-bold"></span>
+          </div>
+          <span class="text-xl font-bold text-gray-800">CRMSystem</span>
+        </a>
+        <button id="closeSidebar" class="md:hidden text-gray-500 hover:text-gray-600">
+          <i data-lucide="x" class="h-6 w-6"></i>
+        </button>
+      </div>
+      
+      <div class="flex-1 overflow-auto py-4 px-3">
+        <nav class="space-y-1">
+          <a href="./customer.html" class="flex items-center px-3 py-2 bg-blue-50 text-blue-700 rounded-md">
+            <i  class="h-5 w-5 mr-3"></i>
+            Dashboard
+          </a>
+          <a href="./Orders.html" class="flex items-center px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">
+            <i  class="h-5 w-5 mr-3"></i>
+            Orders
+          </a>
+          <a href="./invoice.html" class="flex items-center px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">
+            <i  class="h-5 w-5 mr-3"></i>
+            Invoices
+          </a>
+          <a href="./support.html" class="flex items-center px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">
+            <i  class="h-5 w-5 mr-3"></i>
+            Support
+          </a>
+         
+          <a href="./customerset.php" class="flex items-center px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">
+            <i  class="h-5 w-5 mr-3"></i>
+            Settings
+          </a>
+        </nav>
+      </div>
+      
+      <div class="border-t border-gray-200 p-4">
+        <div class="flex items-center">
+          <div class="h-10 w-10 rounded-full  flex items-center justify-center mr-3">
+            <span class="font-medium text-teal-700"></span>
+          </div>
+          
+        </div>
+        <div class="mt-4 flex items-center justify-between">
+         
+          <a href="./logout.php">
+          <button id="logoutButton" class="text-sm font-medium text-gray-700 hover:text-gray-900 px-3 py-1 rounded-md hover:bg-gray-100">
+            Logout
+          </button>
+        </a>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+        <!-- Main Content -->
+        <div class="flex-1 p-5">
+            <div class="md:ml-64 p-4">
+                <div class="flex-1 p-8 overflow-auto">
+                  <div class="max-w-6xl mx-auto">
+            <!-- Header -->
+            <div class="flex justify-between items-center mb-8 pb-5 border-b border-gray-200">
+                <h1 class="text-2xl font-bold text-dark">Orders Management</h1>
+                <div class="flex items-center gap-2">
+                   
+                </div>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
+                <div class="bg-white rounded-lg shadow p-5 flex flex-col">
+                    <i class="fas fa-shopping-cart"></i>
+                    <div class="text-3xl font-bold my-2">1,248</div>
+                    <div class="text-gray-500 text-sm">Total Orders</div>
+                    <div class="mt-auto text-sm text-success flex items-center gap-1">
+                        <i class="fas fa-arrow-up"></i> 12% from last month
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow p-5 flex flex-col">
+                    <i class="fas fa-check-circle"></i>
+                    <div class="text-3xl font-bold my-2">982</div>
+                    <div class="text-gray-500 text-sm">Completed</div>
+                    <div class="mt-auto text-sm text-success flex items-center gap-1">
+                        <i class="fas fa-arrow-up"></i> 8% from last month
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow p-5 flex flex-col">
+                    <i class="fas fa-spinner"></i>
+                    <div class="text-3xl font-bold my-2">156</div>
+                    <div class="text-gray-500 text-sm">Processing</div>
+                    <div class="mt-auto text-sm text-accent flex items-center gap-1">
+                        <i class="fas fa-arrow-down"></i> 3% from last month
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow p-5 flex flex-col">
+                    <i class="fas fa-dollar-sign"></i>
+                    <div class="text-3xl font-bold my-2">$48,752</div>
+                    <div class="text-gray-500 text-sm">Total Revenue</div>
+                    <div class="mt-auto text-sm text-success flex items-center gap-1">
+                        <i class="fas fa-arrow-up"></i> 15% from last month
+                    </div>
+                </div>
+            </div>
+
+            <!-- Orders Section -->
+            <div class="bg-white rounded-lg shadow p-5 mb-8">
+                <div class="flex justify-between items-center mb-5">
+                    <h2 class="text-xl font-semibold text-dark">Recent Orders</h2>
+                    <div class="flex flex-col md:flex-row gap-3">
+                        <div class="relative">
+                            <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                            <input type="text" placeholder="Search orders..." class="pl-10 pr-3 py-2 border border-gray-300 rounded w-full md:w-48">
+                        </div>
+                        <div>
+                            <select id="status-filter" class="px-3 py-2 border border-gray-300 rounded bg-white cursor-pointer">
+                                <option value="all">All Statuses</option>
+                                <option value="pending">Pending</option>
+                                <option value="processing">Processing</option>
+                                <option value="completed">Completed</option>
+                                <option value="cancelled">Cancelled</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="min-w-full">
+                        <thead>
+                            <tr class="bg-gray-50">
+                                <th class="px-4 py-3 text-left font-medium text-dark">Order ID</th>
+                                <th class="px-4 py-3 text-left font-medium text-dark">Customer</th>
+                                <th class="px-4 py-3 text-left font-medium text-dark">Date</th>
+                                <th class="px-4 py-3 text-left font-medium text-dark">Amount</th>
+                                <th class="px-4 py-3 text-left font-medium text-dark">Status</th>
+                                <th class="px-4 py-3 text-left font-medium text-dark">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-gray-100 hover:bg-gray-50">
+                                <td class="px-4 py-3 text-primary font-medium cursor-pointer" onclick="openOrderModal('ORD-2023-1001')">ORD-2023-1001</td>
+                                <td class="px-4 py-3">John Smith</td>
+                                <td class="px-4 py-3">Oct 12, 2023</td>
+                                <td class="px-4 py-3">$245.99</td>
+                                <td class="px-4 py-3">
+                                    <span class="inline-block px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">Completed</span>
+                                </td>
+                                <td class="px-4 py-3">
+                                    <button class="px-2 py-1 bg-primary text-white rounded text-sm hover:bg-secondary transition" onclick="openOrderModal('ORD-2023-1001')">
+                                        <i class="fas fa-eye"></i> View
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-gray-100 hover:bg-gray-50">
+                                <td class="px-4 py-3 text-primary font-medium cursor-pointer" onclick="openOrderModal('ORD-2023-1002')">ORD-2023-1002</td>
+                                <td class="px-4 py-3">Sarah Johnson</td>
+                                <td class="px-4 py-3">Oct 11, 2023</td>
+                                <td class="px-4 py-3">$189.50</td>
+                                <td class="px-4 py-3">
+                                    <span class="inline-block px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">Processing</span>
+                                </td>
+                                <td class="px-4 py-3">
+                                    <button class="px-2 py-1 bg-primary text-white rounded text-sm hover:bg-secondary transition" onclick="openOrderModal('ORD-2023-1002')">
+                                        <i class="fas fa-eye"></i> View
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-gray-100 hover:bg-gray-50">
+                                <td class="px-4 py-3 text-primary font-medium cursor-pointer" onclick="openOrderModal('ORD-2023-1003')">ORD-2023-1003</td>
+                                <td class="px-4 py-3">Michael Brown</td>
+                                <td class="px-4 py-3">Oct 10, 2023</td>
+                                <td class="px-4 py-3">$320.00</td>
+                                <td class="px-4 py-3">
+                                    <span class="inline-block px-2 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">Pending</span>
+                                </td>
+                                <td class="px-4 py-3">
+                                    <button class="px-2 py-1 bg-primary text-white rounded text-sm hover:bg-secondary transition" onclick="openOrderModal('ORD-2023-1003')">
+                                        <i class="fas fa-eye"></i> View
+                                    </button>
+                                    
+                                </td>
+                            </tr>
+                            <tr class="border-b border-gray-100 hover:bg-gray-50">
+                                <td class="px-4 py-3 text-primary font-medium cursor-pointer" onclick="openOrderModal('ORD-2023-1004')">ORD-2023-1004</td>
+                                <td class="px-4 py-3">Emily Davis</td>
+                                <td class="px-4 py-3">Oct 9, 2023</td>
+                                <td class="px-4 py-3">$95.75</td>
+                                <td class="px-4 py-3">
+                                    <span class="inline-block px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">Completed</span>
+                                </td>
+                                <td class="px-4 py-3">
+                                    <button class="px-2 py-1 bg-primary text-white rounded text-sm hover:bg-secondary transition" onclick="openOrderModal('ORD-2023-1004')">
+                                        <i class="fas fa-eye"></i> View
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-gray-100 hover:bg-gray-50">
+                                <td class="px-4 py-3 text-primary font-medium cursor-pointer" onclick="openOrderModal('ORD-2023-1005')">ORD-2023-1005</td>
+                                <td class="px-4 py-3">Robert Wilson</td>
+                                <td class="px-4 py-3">Oct 8, 2023</td>
+                                <td class="px-4 py-3">$420.30</td>
+                                <td class="px-4 py-3">
+                                    <span class="inline-block px-2 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800">Cancelled</span>
+                                </td>
+                                <td class="px-4 py-3">
+                                    <button class="px-2 py-1 bg-primary text-white rounded text-sm hover:bg-secondary transition" onclick="openOrderModal('ORD-2023-1005')">
+                                        <i class="fas fa-eye"></i> View
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Details Modal -->
+    <div class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 justify-center items-center" id="orderModal">
+        <div class="bg-white rounded-lg w-full max-w-3xl max-h-screen overflow-y-auto modal-fade-in">
+            <div class="flex justify-between items-center p-4 border-b border-gray-200">
+                <h3 class="text-lg font-semibold text-dark">Order Details</h3>
+                <button class="text-gray-500 text-2xl" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="p-5">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div>
+                        <div class="mb-4">
+                            <span class="block font-medium text-gray-600 mb-1">Order ID</span>
+                            <div class="p-2 bg-gray-50 rounded" id="modal-order-id">ORD-2023-1001</div>
+                        </div>
+                        <div class="mb-4">
+                            <span class="block font-medium text-gray-600 mb-1">Customer Name</span>
+                            <div class="p-2 bg-gray-50 rounded" id="modal-customer-name">John Smith</div>
+                        </div>
+                        <div class="mb-4">
+                            <span class="block font-medium text-gray-600 mb-1">Email</span>
+                            <div class="p-2 bg-gray-50 rounded" id="modal-customer-email">john.smith@example.com</div>
+                        </div>
+                        <div class="mb-4">
+                            <span class="block font-medium text-gray-600 mb-1">Phone</span>
+                            <div class="p-2 bg-gray-50 rounded" id="modal-customer-phone">(555) 123-4567</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="mb-4">
+                            <span class="block font-medium text-gray-600 mb-1">Order Date</span>
+                            <div class="p-2 bg-gray-50 rounded" id="modal-order-date">October 12, 2023</div>
+                        </div>
+                        <div class="mb-4">
+                            <span class="block font-medium text-gray-600 mb-1">Status</span>
+                            <div class="p-2 bg-gray-50 rounded">
+                                <span class="inline-block px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800" id="modal-order-status">Completed</span>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <span class="block font-medium text-gray-600 mb-1">Shipping Address</span>
+                            <div class="p-2 bg-gray-50 rounded" id="modal-shipping-address">
+                                123 Main St, Apt 4B<br>
+                                New York, NY 10001<br>
+                                United States
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <table class="w-full mt-5">
+                    <thead>
+                        <tr class="bg-gray-50">
+                            <th class="px-3 py-2 text-left">Product</th>
+                            <th class="px-3 py-2 text-left">Price</th>
+                            <th class="px-3 py-2 text-left">Quantity</th>
+                            <th class="px-3 py-2 text-left">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody id="modal-products-list">
+                    </tbody>
+                </table>
+
+                <div class="mt-5 p-3 bg-gray-50 rounded text-right">
+                    <span class="font-medium mr-2">Grand Total:</span>
+                    <span class="text-xl text-primary" id="modal-total-amount">$245.99</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const ordersData = {
+            'ORD-2023-1001': {
+                customer: 'John Smith',
+                email: 'john.smith@example.com',
+                phone: '(555) 123-4567',
+                date: 'October 12, 2023',
+                status: 'completed',
+                statusClass: 'bg-green-100 text-green-800',
+                shippingAddress: '123 Main St, Apt 4B<br>New York, NY 10001<br>United States',
+                products: [
+                    { name: 'Wireless Headphones', price: 99.99, quantity: 1, total: 99.99 },
+                    { name: 'Smart Watch', price: 145.99, quantity: 1, total: 145.99 }
+                ],
+                total: 245.98
+            },
+            'ORD-2023-1002': {
+                customer: 'Sarah Johnson',
+                email: 'sarah.j@example.com',
+                phone: '(555) 987-6543',
+                date: 'October 11, 2023',
+                status: 'processing',
+                statusClass: 'bg-blue-100 text-blue-800',
+                shippingAddress: '456 Oak Ave<br>Los Angeles, CA 90015<br>United States',
+                products: [
+                    { name: 'Bluetooth Speaker', price: 79.50, quantity: 1, total: 79.50 },
+                    { name: 'Phone Case', price: 25.00, quantity: 2, total: 50.00 },
+                    { name: 'Screen Protector', price: 15.00, quantity: 4, total: 60.00 }
+                ],
+                total: 189.50
+            },
+            'ORD-2023-1003': {
+                customer: 'Michael Brown',
+                email: 'michael.b@example.com',
+                phone: '(555) 456-7890',
+                date: 'October 10, 2023',
+                status: 'pending',
+                statusClass: 'bg-yellow-100 text-yellow-800',
+                shippingAddress: '789 Pine Rd<br>Chicago, IL 60601<br>United States',
+                products: [
+                    { name: 'Laptop', price: 899.99, quantity: 1, total: 899.99 },
+                    { name: 'Laptop Bag', price: 49.99, quantity: 1, total: 49.99 }
+                ],
+                total: 949.98
+            },
+            'ORD-2023-1004': {
+                customer: 'Emily Davis',
+                email: 'emily.d@example.com',
+                phone: '(555) 234-5678',
+                date: 'October 9, 2023',
+                status: 'completed',
+                statusClass: 'bg-green-100 text-green-800',
+                shippingAddress: '321 Elm St<br>Houston, TX 77002<br>United States',
+                products: [
+                    { name: 'E-book Reader', price: 95.75, quantity: 1, total: 95.75 }
+                ],
+                total: 95.75
+            },
+            'ORD-2023-1005': {
+                customer: 'Robert Wilson',
+                email: 'robert.w@example.com',
+                phone: '(555) 345-6789',
+                date: 'October 8, 2023',
+                status: 'cancelled',
+                statusClass: 'bg-red-100 text-red-800',
+                shippingAddress: '654 Maple Dr<br>Phoenix, AZ 85001<br>United States',
+                products: [
+                    { name: '4K TV', price: 699.99, quantity: 1, total: 699.99 },
+                    { name: 'HDMI Cable', price: 15.99, quantity: 2, total: 31.98 }
+                ],
+                total: 731.97
+            }
+        };
+
+        function openOrderModal(orderId) {
+            const order = ordersData[orderId];
+            if (!order) return;
+
+            document.getElementById('modal-order-id').textContent = orderId;
+            document.getElementById('modal-customer-name').textContent = order.customer;
+            document.getElementById('modal-customer-email').textContent = order.email;
+            document.getElementById('modal-customer-phone').textContent = order.phone;
+            document.getElementById('modal-order-date').textContent = order.date;
+            document.getElementById('modal-shipping-address').innerHTML = order.shippingAddress;
+            document.getElementById('modal-total-amount').textContent = `$${order.total.toFixed(2)}`;
+
+            const statusElement = document.getElementById('modal-order-status');
+            statusElement.textContent = order.status.charAt(0).toUpperCase() + order.status.slice(1);
+            statusElement.className = `inline-block px-2 py-1 rounded-full text-xs font-medium ${order.statusClass}`;
+
+            const productsTable = document.getElementById('modal-products-list');
+            productsTable.innerHTML = '';
+            
+            order.products.forEach(product => {
+                const row = document.createElement('tr');
+                row.className = 'border-b border-gray-100';
+                row.innerHTML = `
+                    <td class="px-3 py-2">${product.name}</td>
+                    <td class="px-3 py-2">$${product.price.toFixed(2)}</td>
+                    <td class="px-3 py-2">${product.quantity}</td>
+                    <td class="px-3 py-2">$${product.total.toFixed(2)}</td>
+                `;
+                productsTable.appendChild(row);
+            });
+
+            document.getElementById('orderModal').classList.remove('hidden');
+            document.getElementById('orderModal').classList.add('flex');
+        }
+
+        function closeModal() {
+            document.getElementById('orderModal').classList.add('hidden');
+            document.getElementById('orderModal').classList.remove('flex');
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('orderModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+        document.getElementById('status-filter').addEventListener('change', function() {
+            const status = this.value;
+            const rows = document.querySelectorAll('tbody tr');
+            
+            rows.forEach(row => {
+                const rowStatus = row.querySelector('.inline-block').textContent.toLowerCase();
+                if (status === 'all' || rowStatus === status) {
+                    row.classList.remove('hidden');
+                } else {
+                    row.classList.add('hidden');
+                }
+            });
+        });
+
+        document.querySelector('.search-box input').addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            const rows = document.querySelectorAll('tbody tr');
+            
+            rows.forEach(row => {
+                const orderId = row.querySelector('td:first-child').textContent.toLowerCase();
+                const customer = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
+                
+                if (orderId.includes(searchTerm) || customer.includes(searchTerm)) {
+                    row.classList.remove('hidden');
+                } else {
+                    row.classList.add('hidden');
+                }
+            });
+        });
+       
+    </script>
+     <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          const currentPage = window.location.pathname.split("/").pop(); // Get the current file name
+          const navLinks = document.querySelectorAll("nav a");
+      
+          navLinks.forEach(link => {
+            const hrefPage = link.getAttribute("href").split("/").pop(); // In case of subfolders
+            // Clear previous highlight
+            link.classList.remove("bg-blue-50", "text-blue-500", "font-semibold");
+            // Set active class if matches current page
+            if (hrefPage === currentPage) {
+              link.classList.add("bg-blue-50", "text-blue-500", "font-semibold");
+            }
+          });
+        });
+      </script>
+</body>
+</html>

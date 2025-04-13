@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard User</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    .sidebar-transition {
+      transition: transform 300ms ease-in-out;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-gray-100 h-full">
+  <!-- Mobile sidebar backdrop -->
+  <div id="sidebarBackdrop" class="fixed inset-0 bg-gray-600 bg-opacity-75 z-20 hidden md:hidden"></div>
+  
+  <!-- Sidebar -->
+  <aside id="sidebar" class="fixed inset-y-0 left-0 z-30 w-64 bg-white border-r border-gray-200 sidebar-transition -translate-x-full md:translate-x-0">
+    <div class="h-full flex flex-col">
+      <div class="h-16 flex items-center justify-between px-4 border-b border-gray-200">
+        <a href="/" class="flex items-center space-x-2">
+          <div class="h-8 w-8 bg-blue-600 rounded-md flex items-center justify-center">
+            <span class="text-white font-bold">CRM</span>
+          </div>
+          <span class="text-xl font-bold text-gray-800">CloudCRM</span>
+        </a>
+        <button id="closeSidebar" class="md:hidden text-gray-500 hover:text-gray-600">
+          <i data-lucide="x" class="h-6 w-6"></i>
+        </button>
+      </div>
+      
+      <div class="flex-1 overflow-auto py-4 px-3">
+        <nav class="space-y-1">
+          <a href="/dashboard-user" class="flex items-center px-3 py-2 bg-blue-50 text-blue-700 rounded-md">
+            <i data-lucide="layout-dashboard" class="h-5 w-5 mr-3"></i>
+            Dashboard
+          </a>
+          <a href="/dashboard-user" class="flex items-center px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">
+            <i data-lucide="users" class="h-5 w-5 mr-3"></i>
+            Contacts
+          </a>
+          <a href="/dashboard-user" class="flex items-center px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">
+            <i data-lucide="inbox" class="h-5 w-5 mr-3"></i>
+            Inbox
+          </a>
+          <a href="/dashboard-user" class="flex items-center px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">
+            <i data-lucide="calendar" class="h-5 w-5 mr-3"></i>
+            Calendar
+          </a>
+          <a href="/dashboard-user" class="flex items-center px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">
+            <i data-lucide="bar-chart-3" class="h-5 w-5 mr-3"></i>
+            Reports
+          </a>
+          <a href="/dashboard-user" class="flex items-center px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">
+            <i data-lucide="settings" class="h-5 w-5 mr-3"></i>
+            Settings
+          </a>
+        </nav>
+      </div>
+      
+      <div class="border-t border-gray-200 p-4">
+        <div class="flex items-center">
+          <div class="h-10 w-10 rounded-full bg-purple-100 flex items-center justify-center mr-3">
+            <span class="font-medium text-purple-700">SJ</span>
+          </div>
+          <div>
+            <p class="font-medium text-gray-800">Sarah Johnson</p>
+            <p class="text-sm text-gray-500">Sales Manager</p>
+          </div>
+        </div>
+        <div class="mt-4 flex items-center justify-between">
+          <button id="toggleDarkMode" class="flex items-center text-gray-500 hover:text-gray-700">
+            <i data-lucide="moon" class="h-5 w-5"></i>
+          </button>
+          <button id="logoutButton" class="text-sm font-medium text-gray-700 hover:text-gray-900 px-3 py-1 rounded-md hover:bg-gray-100">
+            Logout
+          </button>
+        </div>
+      </div>
+    </div>
+  </aside>
+  
+  <!-- Main content -->
+  <div class="md:pl-64">
+    <!-- Top navbar -->
+    <header class="bg-white shadow-sm">
+      <div class="flex items-center justify-between h-16 px-4">
+        <div class="flex items-center md:hidden">
+          <button id="openSidebar" class="text-gray-500 hover:text-gray-600">
+            <i data-lucide="menu" class="h-6 w-6"></i>
+          </button>
+        </div>
+        
+        <div class="flex-1 px-4 md:px-0">
+          <div class="relative max-w-md">
+            <i data-lucide="search" class="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400"></i>
+            <input 
+              type="search" 
+              placeholder="Search contacts, tasks..." 
+              class="pl-10 pr-4 py-2 w-full rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            />
+          </div>
+        </div>
+        
+        <div class="flex items-center">
+          <button class="relative text-gray-500 hover:text-gray-600 p-1">
+            <i data-lucide="bell" class="h-6 w-6"></i>
+            <span class="absolute top-0 right-0 h-2 w-2 rounded-full bg-red-500"></span>
+          </button>
+          <div class="border-l border-gray-200 h-6 mx-4"></div>
+          <button class="flex items-center text-gray-700 hover:text-gray-900">
+            <span class="mr-2">Help</span>
+            <i data-lucide="chevron-down" class="h-4 w-4"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+    
+    <!-- Main content area -->
+    <main class="p-6">
+      <div class="mb-8">
+        <h1 class="text-2xl font-bold text-gray-900">Welcome, Sarah!</h1>
+        <p class="mt-1 text-gray-600">Here's what's happening with your contacts today.</p>
+      </div>
+      
+      <!-- Stats -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-100">
+          <p class="text-gray-500 font-medium">Total Contacts</p>
+          <div class="flex items-end justify-between mt-2">
+            <p class="text-3xl font-bold text-gray-900">1,284</p>
+            <div class="flex items-center text-sm text-green-600">
+              +12
+            </div>
+          </div>
+        </div>
+        <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-100">
+          <p class="text-gray-500 font-medium">Tasks Due Today</p>
+          <div class="flex items-end justify-between mt-2">
+            <p class="text-3xl font-bold text-gray-900">8</p>
+            <div class="flex items-center text-sm text-red-600">
+              -2
+            </div>
+          </div>
+        </div>
+        <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-100">
+          <p class="text-gray-500 font-medium">Unread Messages</p>
+          <div class="flex items-end justify-between mt-2">
+            <p class="text-3xl font-bold text-gray-900">23</p>
+            <div class="flex items-center text-sm text-green-600">
+              +5
+            </div>
+          </div>
+        </div>
+        <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-100">
+          <p class="text-gray-500 font-medium">Potential Leads</p>
+          <div class="flex items-end justify-between mt-2">
+            <p class="text-3xl font-bold text-gray-900">42</p>
+            <div class="flex items-center text-sm text-green-600">
+              +8
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Tasks and Contacts -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div class="lg:col-span-2">
+          <div class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden">
+            <div class="px-6 py-4 border-b border-gray-100 flex justify-between items-center">
+              <h2 class="font-semibold text-gray-900">Today's Tasks</h2>
+              <button class="text-sm text-blue-600 hover:text-blue-800 bg-transparent hover:bg-gray-50 px-3 py-1 rounded-md">
+                View All
+              </button>
+            </div>
+            <div class="divide-y divide-gray-100">
+              <div class="flex items-center p-4">
+                <div class="mr-4">
+                  <input 
+                    type="checkbox" 
+                    class="h-5 w-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                  />
+                </div>
+                <div class="min-w-0 flex-1">
+                  <p class="font-medium text-gray-900">
+                    Call with John Smith
+                  </p>
+                  <div class="flex mt-1">
+                    <span class="text-sm text-gray-500">11:00 AM</span>
+                    <span class="mx-2 text-gray-300">•</span>
+                    <span class="text-sm text-gray-500">Call</span>
+                  </div>
+                </div>
+                <button class="text-gray-400 hover:text-gray-500">
+                  <i data-lucide="chevron-down" class="h-5 w-5"></i>
+                </button>
+              </div>
+              <div class="flex items-center p-4">
+                <div class="mr-4">
+                  <input 
+                    type="checkbox" 
+                    class="h-5 w-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                  />
+                </div>
+                <div class="min-w-0 flex-1">
+                  <p class="font-medium text-gray-900">
+                    Send proposal to ABC Corp
+                  </p>
+                  <div class="flex mt-1">
+                    <span class="text-sm text-gray-500">2:00 PM</span>
+                    <span class="mx-2 text-gray-300">•</span>
+                    <span class="text-sm text-gray-500">Email</span>
+                  </div>
+                </div>
+                <button class="text-gray-400 hover:text-gray-500">
+                  <i data-lucide="chevron-down" class="h-5 w-5"></i>
+                </button>
+              </div>
+              <div class="flex items-center p-4">
+                <div class="mr-4">
+                  <input 
+                    type="checkbox" 
+                    checked
+                    class="h-5 w-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                  />
+                </div>
+                <div class="min-w-0 flex-1">
+                  <p class="font-medium text-gray-400 line-through">
+                    Update client information
+                  </p>
+                  <div class="flex mt-1">
+                    <span class="text-sm text-gray-500">4:30 PM</span>
+                    <span class="mx-2 text-gray-300">•</span>
+                    <span class="text-sm text-gray-500">Task</span>
+                  </div>
+                </div>
+                <button class="text-gray-400 hover:text-gray-500">
+                  <i data-lucide="chevron-down" class="h-5 w-5"></i>
+                </button>
+              </div>
+            </div>
+            <div class="px-6 py-4 border-t border-gray-100">
+              <button class="w-full flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md">
+                Add New Task
+              </button>
+            </div>
+          </div>
+          
+          <div class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden mt-6">
+            <div class="p-6">
+              <h2 class="font-semibold text-gray-900 mb-6">Activity Overview</h2>
+              <div class="h-64 flex items-center justify-center bg-gray-50 rounded-md border border-gray-200">
+                <p class="text-gray-500">Activity chart goes here</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div>
+          <div class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden">
+            <div class="px-6 py-4 border-b border-gray-100">
+              <h2 class="font-semibold text-gray-900">Recent Contacts</h2>
+            </div>
+            <div class="divide-y divide-gray-100">
+              <div class="flex items-center p-4">
+                <div class="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+                  <span class="font-medium text-blue-700">AW</span>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <p class="font-medium text-gray-900 truncate">Alice Williams</p>
+                  <p class="text-sm text-gray-500">Acme Inc.</p>
+                </div>
+                <button class="text-gray-400 hover:text-gray-500">
+                  <i data-lucide="chevron-down" class="h-5 w-5"></i>
+                </button>
+              </div>
+              <div class="flex items-center p-4">
+                <div class="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+                  <span class="font-medium text-blue-700">RB</span>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <p class="font-medium text-gray-900 truncate">Robert Brown</p>
+                  <p class="text-sm text-gray-500">XYZ Solutions</p>
+                </div>
+                <button class="text-gray-400 hover:text-gray-500">
+                  <i data-lucide="chevron-down" class="h-5 w-5"></i>
+                </button>
+              </div>
+              <div class="flex items-center p-4">
+                <div class="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+                  <span class="font-medium text-blue-700">JT</span>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <p class="font-medium text-gray-900 truncate">Julia Thompson</p>
+                  <p class="text-sm text-gray-500">Global Tech</p>
+                </div>
+                <button class="text-gray-400 hover:text-gray-500">
+                  <i data-lucide="chevron-down" class="h-5 w-5"></i>
+                </button>
+              </div>
+            </div>
+            <div class="px-6 py-4 border-t border-gray-100">
+              <a href="/dashboard-user" class="text-blue-600 hover:text-blue-800 text-sm font-medium">
+                View All Contacts →
+              </a>
+            </div>
+          </div>
+          
+          <div class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden mt-6">
+            <div class="px-6 py-4 border-b border-gray-100">
+              <h2 class="font-semibold text-gray-900">Upcoming Events</h2>
+            </div>
+            <div class="p-6">
+              <div class="text-center py-8">
+                <i data-lucide="calendar" class="h-12 w-12 mx-auto text-blue-600 mb-2"></i>
+                <p class="text-gray-500 mb-4">No upcoming events today</p>
+                <button class="text-sm border border-gray-300 hover:bg-gray-50 px-4 py-2 rounded-md">
+                  Schedule Event
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+    
+    // DOM elements
+    const sidebar = document.getElementById('sidebar');
+    const sidebarBackdrop = document.getElementById('sidebarBackdrop');
+    const openSidebarBtn = document.getElementById('openSidebar');
+    const closeSidebarBtn = document.getElementById('closeSidebar');
+    const toggleDarkModeBtn = document.getElementById('toggleDarkMode');
+    const logoutButton = document.getElementById('logoutButton');
+    
+    // State
+    let darkMode = false;
+    
+    // Event listeners
+    openSidebarBtn.addEventListener('click', () => {
+      sidebar.classList.remove('-translate-x-full');
+      sidebar.classList.add('translate-x-0');
+      sidebarBackdrop.classList.remove('hidden');
+    });
+    
+    closeSidebarBtn.addEventListener('click', () => {
+      sidebar.classList.remove('translate-x-0');
+      sidebar.classList.add('-translate-x-full');
+      sidebarBackdrop.classList.add('hidden');
+    });
+    
+    sidebarBackdrop.addEventListener('click', () => {
+      sidebar.classList.remove('translate-x-0');
+      sidebar.classList.add('-translate-x-full');
+      sidebarBackdrop.classList.add('hidden');
+    });
+    
+    toggleDarkModeBtn.addEventListener('click', () => {
+      darkMode = !darkMode;
+      if (darkMode) {
+        document.documentElement.classList.add('dark');
+        toggleDarkModeBtn.innerHTML = '<i data-lucide="sun" class="h-5 w-5"></i>';
+      } else {
+        document.documentElement.classList.remove('dark');
+        toggleDarkModeBtn.innerHTML = '<i data-lucide="moon" class="h-5 w-5"></i>';
+      }
+      lucide.createIcons(); // Refresh icons after changing
+    });
+    
+    logoutButton.addEventListener('click', () => {
+      // Add your logout logic here
+      console.log('Logout clicked');
+      alert('Logout functionality would go here');
+    });
+    
+    // Task checkboxes functionality
+    document.querySelectorAll('.divide-y > div input[type="checkbox"]').forEach(checkbox => {
+      checkbox.addEventListener('change', function() {
+        const taskText = this.closest('div').querySelector('.min-w-0 .font-medium');
+        if (this.checked) {
+          taskText.classList.add('text-gray-400', 'line-through');
+          taskText.classList.remove('text-gray-900');
+        } else {
+          taskText.classList.remove('text-gray-400', 'line-through');
+          taskText.classList.add('text-gray-900');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

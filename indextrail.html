@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>CRM System</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="finisher-header.es5.min.js" type="text/javascript"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+</head>
+
+<body class="bg-gray-100">
+  <div class="finisher-header">
+    <header>
+      <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+        <!-- Left Section -->
+        <div class="flex items-center space-x-9 pl-10">
+          <div class="text-2xl font-bold text-blue-600">
+            <span class="text-blue-500">CRM</span>
+          </div>
+          <nav class="space-x-4">
+            <a class="text-white hover:text-pink-300 translatable" href="#">Home</a>
+            <a class="text-white hover:text-pink-300 translatable" href="#">Features</a>
+            <a class="text-white hover:text-pink-300 translatable" href="#">Learn More</a>
+          </nav>
+        </div>
+
+        <!-- Right Section -->
+        <div class="flex items-center space-x-4 pr-6">
+          <!-- Language Dropdown -->
+          <select id="languageSelect" class="px-2 py-1 border rounded text-sm">
+            <option value="en">English</option>
+            <option value="hi">Hindi</option>
+            <option value="es">Spanish</option>
+            <option value="fr">French</option>
+            <option value="de">German</option>
+            <option value="te">Telugu</option>
+            <option value="ta">Tamil</option>
+            <option value="ml">Malayalam</option>
+            <option value="ja">Japanese</option>
+            <option value="it">Italian</option>
+          </select>
+
+          <!-- Login Button -->
+          <a class="text-gray-600 hover:text-gray-900" href="./login.html">
+            <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 translatable">
+              Login
+            </button>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="text-white py-20 pl-10">
+      <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+        <div class="md:w-1/2 mb-8 md:mb-0">
+          <h1 class="text-4xl md:text-5xl font-bold mb-4 translatable">
+            Transform Your Business With Our CRM Solution
+          </h1>
+          <p class="text-lg mb-6 translatable">
+            A complete customer relationship management system with role-based access for customers, users, and administrators
+          </p>
+          <div class="space-x-4">
+            <a href="./login.html">
+              <button class="bg-white text-blue-600 px-6 py-3 rounded font-semibold hover:bg-gray-100 translatable">
+                Get Started
+              </button>
+            </a>
+            <button class="bg-white text-blue-600 px-6 py-3 rounded font-semibold hover:bg-gray-100 translatable">
+              Learn More
+            </button>
+          </div>
+        </div>
+        <div class="md:w-1/2">
+          <!-- Right Image or Content -->
+        </div>
+      </div>
+    </main>
+  </div>
+
+
+ 
+
+
+
+  <div class="container mx-auto px-4 py-8 pt-60">
+    <h1 class="text-3xl font-bold text-center mb-4 translatable">Key Features</h1>
+    <p class="text-center text-lg mb-8 translatable">Our CRM system is designed to help businesses of all sizes manage their customer relationships efficiently</p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pl-14 pr-14">
+        <div class="border rounded-lg p-6 text-center">
+            <div class="text-blue-500 text-4xl mb-4">
+                <i class="fas fa-user-shield"></i>
+            </div>
+            <h2 class="text-xl font-bold mb-2 pl-0 translatable">Role-Based Access</h2>
+            <p class="text-gray-600 mb-4 translatable">Custom interfaces for customers, staff, and administrators</p>
+            <ul class="text-left mb-4">
+                <li class="flex justify-center items-center mb-2 translatable">
+                    <i class="fas fa-check-circle text-green-500 mr-2 translatable"></i> Tailored dashboards for each role
+                </li>
+                <li class="flex justify-center items-center mb-2 translatable">
+                    <i class="fas fa-check-circle text-green-500 mr-2 translatable"></i> Permission management
+                </li>
+                <li class="flex justify-center items-center mb-2 translatable">
+                    <i class="fas fa-check-circle text-green-500 mr-2 translatable"></i> Secure data access controls
+                </li>
+            </ul>
+            <button class="bg-gray-100 text-gray-800 py-2 px-4 rounded border border-blue-500 translatable">Learn More</button>
+        </div>
+        <div class="border rounded-lg p-6 text-center">
+            <div class="text-blue-500 text-4xl mb-4">
+                <i class="fas fa-chart-line"></i>
+            </div>
+            <h2 class="text-xl font-bold mb-2 translatable">Advanced Analytics</h2>
+            <p class="text-gray-600 mb-4 translatable">Powerful insights to drive business decisions</p>
+            <ul class="text-left mb-4">
+                <li class="flex justify-center items-center mb-2 translatable">
+                    <i class="fas fa-check-circle text-green-500 mr-2 translatable"></i> Interactive dashboards
+                </li>
+                <li class="flex justify-center items-center mb-2 translatable">
+                    <i class="fas fa-check-circle text-green-500 mr-2 translatable"></i> Custom report generation
+                </li>
+                <li class="flex justify-center items-center mb-2 translatable">
+                    <i class="fas fa-check-circle text-green-500 mr-2 translatable"></i> Data visualization tools
+                </li>
+            </ul>
+            <button class="bg-gray-100 text-gray-800 py-2 px-4 rounded border border-blue-500 translatable">Learn More</button>
+        </div>
+        <div class="border rounded-lg p-6 text-center">
+            <div class="text-blue-500 text-4xl mb-4">
+                <i class="fas fa-globe"></i>
+            </div>
+            <h2 class="text-xl font-bold mb-2 translatable">Multilingual Support</h2>
+            <p class="text-gray-600 mb-4 translatable">Break language barriers for global teams</p>
+            <ul class="text-left mb-4">
+                <li class="flex justify-center items-center mb-2 translatable">
+                    <i class="fas fa-check-circle text-green-500 mr-2 text-center translatable"></i> Interface in multiple languages
+                </li>
+                <li class="flex justify-center items-center mb-2 translatable">
+                    <i class="fas fa-check-circle text-green-500 mr-2 translatable"></i> One-click language switching
+                </li>
+                <li class="flex justify-center items-center mb-2 translatable">
+                    <i class="fas fa-check-circle text-green-500 mr-2 translatable"></i> Localized date and number formats
+                </li>
+            </ul>
+            <button class="bg-gray-100 text-gray-800 py-2 px-4 rounded border border-blue-500 translatable">Learn More</button>
+        </div>
+    </div>
+</div>
+<div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+        <h2 class="text-3xl font-extrabold text-gray-900 translatable">Trusted by Businesses Worldwide</h2>
+        <p class="mt-4 text-lg text-gray-600 translatable">See what our customers have to say about our CRM solution</p>
+    </div>
+    <div class="mt-12 grid gap-8 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="flex items-center mb-4">
+                <div class="flex-shrink-0">
+                    <i class="fas fa-star text-yellow-500"></i>
+                    <i class="fas fa-star text-yellow-500"></i>
+                    <i class="fas fa-star text-yellow-500"></i>
+                    <i class="fas fa-star text-yellow-500"></i>
+                    <i class="fas fa-star text-yellow-500"></i>
+                </div>
+            </div>
+            <p class="text-gray-700 mb-4 translatable">"This CRM system has transformed how we manage our customer relationships. The role-based access is perfect for our team structure."</p>
+            <p class="font-bold text-gray-900 translatable">Sarah Johnson</p>
+            <p class="text-gray-600 translatable">CEO, TechSolutions Inc.</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="flex items-center mb-4">
+                <div class="flex-shrink-0">
+                    <i class="fas fa-star text-yellow-500"></i>
+                    <i class="fas fa-star text-yellow-500"></i>
+                    <i class="fas fa-star text-yellow-500"></i>
+                    <i class="fas fa-star text-yellow-500"></i>
+                    <i class="fas fa-star text-yellow-500"></i>
+                </div>
+            </div>
+            <p class="text-gray-700 mb-4 translatable">"The multilingual support has been a game-changer for our international team. We can all work in our preferred languages while collaborating seamlessly."</p>
+            <p class="font-bold text-gray-900 translatable">Marcus Chen</p>
+            <p class="text-gray-600 translatable">COO, Global Innovations</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="flex items-center mb-4">
+                <div class="flex-shrink-0">
+                    <i class="fas fa-star text-yellow-500"></i>
+                    <i class="fas fa-star text-yellow-500"></i>
+                    <i class="fas fa-star text-yellow-500"></i>
+                    <i class="fas fa-star text-yellow-500"></i>
+                    <i class="fas fa-star text-yellow-500"></i>
+                </div>
+            </div>
+            <p class="text-gray-700 mb-4 translatable">"As an administrator, I appreciate the comprehensive analytics and reporting. It helps us make data-driven decisions for our business growth."</p>
+            <p class="font-bold text-gray-900 translatable">Emily Rodriguez</p>
+            <p class="text-gray-600 translatable">Director of Sales, Retail Plus</p>
+        </div>
+    </div>
+</div>
+<!---->
+<header class="bg-blue-600 text-white text-center py-16">
+    <h1 class="text-3xl font-bold mb-4  translatable">Ready to streamline your customer management?</h1>
+    <p class="text-lg mb-6 translatable">Start using our CRM system today and see the difference it makes for your business</p>
+    <a class="text-gray-600 hover:text-gray-900" href="./login.html">
+    <button class="bg-white text-blue-600 font-semibold py-2 px-6 rounded translatable">Get Started Now</button>
+</header>
+</a>
+<!--footer-->
+<footer class="bg-gray-50 py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+                <h2 class="text-lg font-semibold text-blue-600  translatable">CRMSystem</h2>
+                <p class="mt-2 text-sm text-gray-600 translatable">Comprehensive customer relationship management solution for businesses of all sizes.</p>
+            </div>
+            <div>
+                <h2 class="text-lg font-semibold text-gray-800 translatable">Resources</h2>
+                <ul class="mt-2 space-y-2">
+                    <li><a href="#" class="text-sm text-gray-600 hover:text-gray-800 translatable">About Us</a></li>
+                    <li><a href="#" class="text-sm text-gray-600 hover:text-gray-800 translatable">Blog</a></li>
+                    <li><a href="#" class="text-sm text-gray-600 hover:text-gray-800 translatable">Documentation</a></li>
+                </ul>
+            </div>
+            <div>
+                <h2 class="text-lg font-semibold text-gray-800 translatable">Legal</h2>
+                <ul class="mt-2 space-y-2">
+                    <li><a href="#" class="text-sm text-gray-600 hover:text-gray-800 translatable">Privacy Policy</a></li>
+                    <li><a href="#" class="text-sm text-gray-600 hover:text-gray-800 translatable">Terms of Service</a></li>
+                    <li><a href="#" class="text-sm text-gray-600 hover:text-gray-800 translatable">Cookie Policy</a></li>
+                </ul>
+            </div>
+            <div>
+                <h2 class="text-lg font-semibold text-gray-800 translatable">Contact</h2>
+                <ul class="mt-2 space-y-2">
+                    <li><a href="mailto:support@crmsystem.com" class="text-sm text-gray-600 hover:text-gray-800">support@crmsystem.com</a></li>
+                    <li><a href="tel:+15551234567" class="text-sm text-gray-600 hover:text-gray-800">+1 (555) 123-4567</a></li>
+                    <li class="text-sm text-gray-600">123 CRM Street, Suite 456<br>San Francisco, CA 94107</li>
+                </ul>
+            </div>
+        </div>
+        <div class="mt-8 border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center">
+            <p class="text-sm text-gray-600 translatable">&copy; 2025 CRMSystem. All rights reserved.</p>
+            <div class="mt-4 md:mt-0 flex space-x-4">
+                <a href="#" class="text-gray-600 hover:text-gray-800"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-gray-600 hover:text-gray-800"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-gray-600 hover:text-gray-800"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-gray-600 hover:text-gray-800"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </div>
+</footer>
+<script type="text/javascript">
+    new FinisherHeader({
+      "count": 10,
+      "size": {
+        "min": 2,
+        "max": 40,
+        "pulse": 0
+      },
+      "speed": {
+        "x": {
+          "min": 0,
+          "max": 0.8
+        },
+        "y": {
+          "min": 0,
+          "max": 0.2
+        }
+      },
+      "colors": {
+        "background": "#15182e",
+        "particles": [
+          "#ff926b",
+          "#87ddfe",
+          "#acaaff",
+          "#1bffc2",
+          "#f9a5fe"
+        ]
+      },
+      "blending": "screen",
+      "opacity": {
+        "center": 1,
+        "edge": 1
+      },
+      "skew": -1,
+      "shapes": [
+        "c",
+        "s",
+        "t"
+      ]
+    });
+  </script>
+   <script>
+  const apiKey = 'AIzaSyAOan6AJhCDRKjC6S8rrhgI9qz16n9AyQo'; // your actual key
+
+  async function translateText(text, targetLang) {
+    try {
+      const response = await fetch(`https://translation.googleapis.com/language/translate/v2?key=${apiKey}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          q: text,
+          target: targetLang,
+          format: 'text'
+        })
+      });
+
+      const data = await response.json();
+      return data.data.translations[0].translatedText;
+    } catch (err) {
+      console.error("Translation error:", err);
+      return null;
+    }
+  }
+
+  async function translatePage(lang) {
+    const elements = document.querySelectorAll('.translatable');
+    for (let el of elements) {
+      const originalText = el.getAttribute('data-original') || el.innerText;
+      el.setAttribute('data-original', originalText);
+      const translatedText = await translateText(originalText, lang);
+      if (translatedText) el.innerText = translatedText;
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const langSelect = document.getElementById('languageSelect');
+    const savedLang = localStorage.getItem('selectedLanguage') || 'en';
+    if (langSelect) langSelect.value = savedLang;
+    translatePage(savedLang);
+
+    if (langSelect) {
+      langSelect.addEventListener('change', async function () {
+        const selected = this.value;
+        localStorage.setItem('selectedLanguage', selected);
+        translatePage(selected);
+      });
+    }
+  });
+</script>
+
+</body>
+</html>
