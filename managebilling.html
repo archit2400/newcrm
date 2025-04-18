@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Billing Management</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col items-center p-6">
+  <h1 class="text-3xl font-bold mb-6 text-blue-700">Billing</h1>
+
+  <!-- Form -->
+  <form id="billForm" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-6 w-full max-w-xl">
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2">Customer Name</label>
+      <input required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" id="customer" type="text" placeholder="Customer Name">
+    </div>
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2">Amount ($)</label>
+      <input required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" id="amount" type="number" placeholder="Amount">
+    </div>
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2">Date</label>
+      <input required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" id="date" type="date">
+    </div>
+    <div class="flex items-center justify-between flex-wrap gap-2">
+      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit">Add Bill</button>
+      <button type="button" onclick="exportBills()" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Export JSON</button>
+      <label class="cursor-pointer bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">
+        Import JSON
+        <input type="file" accept="application/JSON" onchange="importBills(event)" class="hidden">
+      </label>
+    </div>
+  </form>
+
+  <!-- Bills Table -->
+  <div class="w-full max-w-4xl">
+    <table class="min-w-full bg-white shadow-md rounded">
+      <thead class="bg-blue-500 text-white">
+        <tr>
+          <th class="py-2">Customer</th>
+          <th class="py-2">Amount ($)</th>
+          <th class="py-2">Date</th>
+          <th class="py-2">Actions</th>
+        </tr>
+      </thead>
+      <tbody id="billTableBody"></tbody>
+      <tfoot class="bg-gray-100">
+        <tr>
+          <td class="py-2 font-bold text-right pr-4" colspan="1">Total:</td>
+          <td class="py-2 font-bold" id="totalAmount">$0</td>
+          <td colspan="2"></td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+
+  <script>
+    let bills = JSON.parse(localStorage.getItem('bills')) || [];
+
+    function saveBills() {
+      localStorage.setItem('bills', JSON.stringify(bills));
+    }
+
+    function updateTable() {
+      const tableBody = document.getElementById('billTableBody');
+      tableBody.innerHTML = '';
+      let total = 0;
+
+      bills.forEach((bill, index) => {
+        total += Number(bill.amount);
+        tableBody.innerHTML += `
+          <tr class="text-center border-t">
+            <td class="py-2">${bill.customer}</td>
+            <td class="py-2">$${bill.amount}</td>
+            <td class="py-2">${bill.date}</td>
+            <td class="py-2">
+              <button onclick="editBill(${index})" class="bg-yellow-500 hover:bg-yellow-700 text-white py-1 px-3 rounded mr-2">Edit</button>
+              <button onclick="deleteBill(${index})" class="bg-red-500 hover:bg-red-700 text-white py-1 px-3 rounded">Delete</button>
+            </td>
+          </tr>
+        `;
+      });
+
+      document.getElementById('totalAmount').textContent = `$${total.toFixed(2)}`;
+      saveBills();
+    }
+
+    document.getElementById('billForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const customer = document.getElementById('customer').value.trim();
+      const amount = document.getElementById('amount').value.trim();
+      const date = document.getElementById('date').value;
+
+      if (!customer || !amount || !date) return;
+
+      bills.push({ customer, amount, date });
+      this.reset();
+      updateTable();
+    });
+
+    function deleteBill(index) {
+      if (confirm('Are you sure you want to delete this bill?')) {
+        bills.splice(index, 1);
+        updateTable();
+      }
+    }
+
+    function editBill(index) {
+      const bill = bills[index];
+      const newCustomer = prompt('Edit Customer Name:', bill.customer);
+      const newAmount = prompt('Edit Amount:', bill.amount);
+      const newDate = prompt('Edit Date:', bill.date);
+
+      if (newCustomer && newAmount && newDate) {
+        bills[index] = { customer: newCustomer, amount: newAmount, date: newDate };
+        updateTable();
+      }
+    }
+
+    function exportBills() {
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(bills));
+      const dlAnchorElem = document.createElement('a');
+      dlAnchorElem.setAttribute("href", dataStr);
+      dlAnchorElem.setAttribute("download", "bills.json");
+      dlAnchorElem.click();
+    }
+
+    function importBills(event) {
+      const fileReader = new FileReader();
+      fileReader.onload = function(e) {
+        try {
+          bills = JSON.parse(e.target.result);
+          updateTable();
+        } catch (err) {
+          alert('Invalid JSON file');
+        }
+      };
+      fileReader.readAsText(event.target.files[0]);
+    }
+
+    updateTable();
+  </script>
+</body>
+</html>

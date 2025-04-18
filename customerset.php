@@ -86,37 +86,45 @@ while($row = mysqli_fetch_assoc($result)) {
                 <button class="px-4 py-2 font-medium border-b-2 border-blue-600 text-blue-600 translatable">Account</button>
               </div>
     
-              <form method="POST" action="save_settings.php" class="bg-white rounded-lg shadow p-6 mb-6">
-                <h2 class="text-xl font-semibold mb-4 translatable">Account Information</h2>
-            
-                <input type="text" name="first_name" value="Your Name" placeholder="First Name" class="w-full border rounded px-3 py-2 mb-2">
-                <input type="text" name="last_name" value="Last Name" placeholder="Last Name" class="w-full border rounded px-3 py-2 mb-2">
-                <input type="email" name="email" value="Email" placeholder="Email" class="w-full border rounded px-3 py-2 mb-2">
-                <input type="tel" name="phone" value="+1 (555) 123-4567" placeholder="Phone Number" class="w-full border rounded px-3 py-2 mb-2">
-            
-                <input type="text" name="company_name" value="Your Company Inc." placeholder="Company Name" class="w-full border rounded px-3 py-2 mb-2">
-            
-                <select name="industry" class="w-full border rounded px-3 py-2 mb-2">
-                    <option value="" disabled selected>Select Industry</option>
-                    <option value="Technology">Technology</option>
-                    <option value="Finance">Finance</option>
-                    <option value="Healthcare">Healthcare</option>
-                    <option value="Education">Education</option>
-                    <option value="Other">Other</option>
-                </select>
-            
-                <input type="text" name="address1" value="123 Business St" placeholder="Address Line 1" class="w-full border rounded px-3 py-2 mb-2">
-                <input type="text" name="address2" value="Suite 400" placeholder="Address Line 2" class="w-full border rounded px-3 py-2 mb-2">
-            
-                <input type="text" name="city" value="San Francisco" placeholder="City" class="w-full border rounded px-3 py-2 mb-2">
-                <input type="text" name="state" value="CA" placeholder="State" class="w-full border rounded px-3 py-2 mb-2">
-                <input type="text" name="zip" value="94107" placeholder="ZIP Code" class="w-full border rounded px-3 py-2 mb-2">
-            
-                <input type="text" name="company_address" value="123 Business St" placeholder="Company Address" class="w-full border rounded px-3 py-2 mb-2">
-                <input type="text" name="suite" value="Suite 400" placeholder="Suite/Unit" class="w-full border rounded px-3 py-2 mb-4">
-            
-                <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition">Save Info</button>
-            </form>
+             <!-- Replace your current form with this one -->
+<form id="settingsForm" method="POST" action="save_settings.php" class="bg-white rounded-lg shadow p-6 mb-6">
+    <h2 class="text-xl font-semibold mb-4 translatable">Account Information</h2>
+    
+    <?php
+    include 'db_connect.php';
+    $result = mysqli_query($conn, "SELECT * FROM usersettings LIMIT 1");
+    $settings = mysqli_fetch_assoc($result);
+    mysqli_close($conn);
+    ?>
+    
+    <input type="text" name="first_name" value="<?php echo isset($settings['first_name']) ? htmlspecialchars($settings['first_name']) : ''; ?>" placeholder="First Name" class="w-full border rounded px-3 py-2 mb-2">
+    <input type="text" name="last_name" value="<?php echo isset($settings['last_name']) ? htmlspecialchars($settings['last_name']) : ''; ?>" placeholder="Last Name" class="w-full border rounded px-3 py-2 mb-2">
+    <input type="email" name="email" value="<?php echo isset($settings['email']) ? htmlspecialchars($settings['email']) : ''; ?>" placeholder="Email" class="w-full border rounded px-3 py-2 mb-2">
+    <input type="tel" name="phone" value="<?php echo isset($settings['phone']) ? htmlspecialchars($settings['phone']) : ''; ?>" placeholder="Phone Number" class="w-full border rounded px-3 py-2 mb-2">
+    
+    <input type="text" name="company_name" value="<?php echo isset($settings['company_name']) ? htmlspecialchars($settings['company_name']) : ''; ?>" placeholder="Company Name" class="w-full border rounded px-3 py-2 mb-2">
+    
+    <select name="industry" class="w-full border rounded px-3 py-2 mb-2">
+        <option value="" disabled>Select Industry</option>
+        <option value="Technology" <?php echo (isset($settings['industry']) && $settings['industry'] == 'Technology' ? 'selected' : ''); ?>>Technology</option>
+        <option value="Finance" <?php echo (isset($settings['industry']) && $settings['industry'] == 'Finance' ? 'selected' : ''); ?>>Finance</option>
+        <option value="Healthcare" <?php echo (isset($settings['industry']) && $settings['industry'] == 'Healthcare' ? 'selected' : ''); ?>>Healthcare</option>
+        <option value="Education" <?php echo (isset($settings['industry']) && $settings['industry'] == 'Education' ? 'selected' : ''); ?>>Education</option>
+        <option value="Other" <?php echo (isset($settings['industry']) && $settings['industry'] == 'Other' ? 'selected' : ''); ?>>Other</option>
+    </select>
+    
+    <input type="text" name="address1" value="<?php echo isset($settings['address1']) ? htmlspecialchars($settings['address1']) : ''; ?>" placeholder="Address Line 1" class="w-full border rounded px-3 py-2 mb-2">
+    <input type="text" name="address2" value="<?php echo isset($settings['address2']) ? htmlspecialchars($settings['address2']) : ''; ?>" placeholder="Address Line 2" class="w-full border rounded px-3 py-2 mb-2">
+    
+    <input type="text" name="city" value="<?php echo isset($settings['city']) ? htmlspecialchars($settings['city']) : ''; ?>" placeholder="City" class="w-full border rounded px-3 py-2 mb-2">
+    <input type="text" name="state" value="<?php echo isset($settings['state']) ? htmlspecialchars($settings['state']) : ''; ?>" placeholder="State" class="w-full border rounded px-3 py-2 mb-2">
+    <input type="text" name="zip" value="<?php echo isset($settings['zip']) ? htmlspecialchars($settings['zip']) : ''; ?>" placeholder="ZIP Code" class="w-full border rounded px-3 py-2 mb-2">
+    
+    <input type="text" name="company_address" value="<?php echo isset($settings['company_address']) ? htmlspecialchars($settings['company_address']) : ''; ?>" placeholder="Company Address" class="w-full border rounded px-3 py-2 mb-2">
+    <input type="text" name="suite" value="<?php echo isset($settings['suite']) ? htmlspecialchars($settings['suite']) : ''; ?>" placeholder="Suite/Unit" class="w-full border rounded px-3 py-2 mb-4">
+    
+    <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition">Save Info</button>
+</form>
             
             
       </div>
@@ -135,21 +143,7 @@ while($row = mysqli_fetch_assoc($result)) {
           </select>
         <!-- Danger Zone -->
       
-  <script>
-    // Simple script to handle tab switching
-    document.querySelectorAll('[role="tab"]').forEach(tab => {
-      tab.addEventListener('click', function() {
-        // Remove active class from all tabs
-        document.querySelectorAll('[role="tab"]').forEach(t => {
-          t.classList.remove('border-blue-600', 'text-blue-600');
-          t.classList.add('text-gray-600', 'hover:text-blue-600');
-        });
-        // Add active class to clicked tab
-        this.classList.add('border-blue-600', 'text-blue-600');
-        this.classList.remove('text-gray-600', 'hover:text-blue-600');
-      });
-    });
-  </script>
+ 
     <script>
         const apiKey = 'AIzaSyAOan6AJhCDRKjC6S8rrhgI9qz16n9AyQo'; // your actual key
       
@@ -197,9 +191,31 @@ while($row = mysqli_fetch_assoc($result)) {
             });
           }
         });
-      </script>
-      <script>
-        document.addEventListener("DOMContentLoaded", function () {
+      document.getElementById("settingsForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const formData = new FormData(this);
+
+    fetch("save_settings.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(res => res.json())
+    .then(response => {
+        if (response.status === 'success') {
+            alert(response.message);
+            // Optional: You can update the page content here if needed
+        } else {
+            alert(response.message);
+        }
+    })
+    .catch(error => {
+        alert("Error updating settings. Please try again.");
+        console.error(error);
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
           const currentPage = window.location.pathname.split("/").pop(); // Get the current file name
           const navLinks = document.querySelectorAll("nav a");
       
@@ -213,38 +229,9 @@ while($row = mysqli_fetch_assoc($result)) {
             }
           });
         });
+</script>
 
-        document.getElementById('settingsForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    // You can add form validation here if needed
-    
-    // Submit the form
-    this.submit();
-}); 
-
-document.getElementById("settingsForm").addEventListener("submit", function(e) {
-    e.preventDefault();
-
-    const formData = new FormData(this);
-
-    fetch("save_settings.php", {
-        method: "POST",
-        body: formData
-    })
-    .then(res => res.text())
-    .then(response => {
-        alert("Settings updated successfully!");
-        // Optional: update frontend fields or display success message
-    })
-    .catch(error => {
-        alert("Error updating settings.");
-        console.error(error);
-    });
-});
-
-
-      </script>
+      
       
 </body>
 </html>

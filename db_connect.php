@@ -1,7 +1,7 @@
 <?php
 $host = 'localhost';
-$user = 'root'; // Change if you have a different user
-$pass = ''; // Add your MySQL password
+$user = 'root'; 
+$pass = '';
 $db = 'newcrm';
 
 $conn = new mysqli($host, $user, $pass, $db);

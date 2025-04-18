@@ -63,7 +63,7 @@
     <div class="flex justify-between items-center p-4 pb-0">
       <h1 class="font-bold text-3xl translatable">Contacts</h1>
       <!-- Added id to the button -->
-      <button id="openModal" class="bg-blue-400 px-2 py-2 font-bold rounded-lg translatable">Add New User</button>
+      <button id="openModal" class="bg-blue-400 px-2 py-2 font-bold rounded-lg translatable">Add New Customer</button>
     </div>
 
     <!-- Add User Modal -->
@@ -84,7 +84,7 @@
       </div>
     </div>
 
-    <p class="p-4 pt-0 translatable">A list of all the users in your account including their name, title, email and role.</p>
+    <p class="p-4 pt-0 translatable">A list of all the Customer in your account including their name, title, email and role.</p>
     <table style="width: 100%;">
       <tr>
         <th class="text-left font-bold text-2xl pl-4 translatable">Name</th>

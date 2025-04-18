@@ -30,7 +30,7 @@ include 'db_connect.php'; // Make sure this file connects to your database
       <a href="./user_management.php" class="flex items-center px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md translatable">User Management</a>
       <a href="./admininbox.html" class="flex items-center px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md translatable">Inbox</a>
       <a href="reports_analytics.html" class="flex items-center px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md translatable">Reports & Analytics</a>
-      <a href="./settings.html" class="flex items-center px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md translatable">Settings</a>
+      <a href="./customerset.php" class="flex items-center px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md translatable">Settings</a>
     </nav>
     <div class="border-t border-gray-200 p-4">
       <div class="flex items-center">

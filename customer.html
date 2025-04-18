@@ -33,24 +33,24 @@
       
       <div class="flex-1 overflow-auto py-4 px-3">
         <nav class="space-y-1">
-          <a href="./customer.html" class="flex items-center px-3 py-2 bg-blue-50 text-blue-700 rounded-md">
+          <a href="./customer.html" class=" translatable flex items-center px-3 py-2 bg-blue-50 text-blue-700 rounded-md">
             <i  class="h-5 w-5 mr-3"></i>
             Dashboard
           </a>
-          <a href="./Orders.html" class="flex items-center px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">
+          <a href="./Orders.html" class=" translatable flex items-center px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">
             <i  class="h-5 w-5 mr-3"></i>
             Orders
           </a>
-          <a href="./invoice.html" class="flex items-center px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">
+          <a href="./invoice.html" class=" translatable flex items-center px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">
             <i  class="h-5 w-5 mr-3"></i>
             Invoices
           </a>
-          <a href="./support.html" class="flex items-center px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">
+          <a href="./support.html" class=" translatable flex items-center px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">
             <i  class="h-5 w-5 mr-3"></i>
             Support
           </a>
           
-          <a href="./customerset.php" class="flex items-center px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">
+          <a href="./customerset.php" class=" translatable flex items-center px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">
             <i  class="h-5 w-5 mr-3"></i>
             Settings
           </a>
@@ -67,7 +67,7 @@
         <div class="mt-4 flex items-center justify-between">
          
           <a href="./logout.php">
-          <button id="logoutButton" class=" text-red-400 text-sm font-medium text-gray-700 hover:text-gray-900 px-3 py-1 rounded-md hover:bg-gray-100">
+          <button id="logoutButton" class="  translatable text-red-400 text-sm font-medium text-gray-700 hover:text-gray-900 px-3 py-1 rounded-md hover:bg-gray-100">
             Logout
           </button>
         </a>
@@ -99,7 +99,7 @@
           <div class="border-l border-gray-200 h-6 mx-4"></div>
           <a href="./customer.html" class="flex items-center text-gray-700 hover:text-gray-900">
             <i data-lucide="help-circle" class="h-5 w-5 mr-1"></i>
-            <span>Help</span>
+            <span></span>
           </a>
         </div>
         <select id="languageSelect" class="px-2 py-1 border rounded text-sm">
@@ -120,24 +120,26 @@
     <!-- Main content area -->
     <main class="p-6">
       <div class="mb-8">
-        <h1 class="text-2xl font-bold text-gray-900">Customer Dashboard</h1>
-        <p class="mt-1 text-gray-600">Welcome back </p>
+        <h1 class="text-2xl font-bold text-gray-900 translatable ">Customer Dashboard</h1>
+        <p class="mt-1 text-gray-600 translatable ">Welcome back </p>
       </div>
       
       <!-- Account Overview -->
       <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-6 mb-8">
         <div class="flex flex-col md:flex-row md:items-center md:justify-between">
           <div>
-            <h2 class="text-lg font-semibold text-gray-900">Account Overview</h2>
-            <p class="mt-1 text-gray-600">Premium Plan - Active</p>
+            <h2 class="text-lg font-semibold text-gray-900 translatable ">Account Overview</h2>
+            <p class="mt-1 text-gray-600 translatable ">Premium Plan - Active</p>
           </div>
           <div class="mt-4 md:mt-0 flex flex-wrap gap-3">
-            <button class="border border-gray-300 bg-white hover:bg-gray-50 text-gray-700 py-2 px-4 rounded-md flex items-center">
+            <a href="./managebilling.html">
+            <button class=" translatable border border-gray-300 bg-white hover:bg-gray-50 text-gray-700 py-2 px-4 rounded-md flex items-center">
               <i data-lucide="credit-card" class="h-4 w-4 mr-2"></i>
               Manage Billing
             </button>
+          </a> translatable 
             <a href="./support.html">
-            <button class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md flex items-center">
+            <button class=" translatable bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md flex items-center">
               <i data-lucide="help-circle" class="h-4 w-4 mr-2"></i>
               Get Support
             </button>
@@ -147,18 +149,18 @@
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
           <div class="bg-gray-50 p-4 rounded-md border border-gray-200">
-            <p class="text-sm text-gray-500">Next Billing Date</p>
+            <p class="text-sm text-gray-500 translatable ">Next Billing Date</p>
             <p class="mt-1 font-medium">May 15, 2025</p>
           </div>
           <div class="bg-gray-50 p-4 rounded-md border border-gray-200">
-            <p class="text-sm text-gray-500">Subscription Status</p>
+            <p class="text-sm text-gray-500 translatable ">Subscription Status</p>
             <div class="mt-1 flex items-center">
               <i data-lucide="check-circle" class="h-4 w-4 text-green-500 mr-1"></i>
               <span class="font-medium">Active</span>
             </div>
           </div>
           <div class="bg-gray-50 p-4 rounded-md border border-gray-200">
-            <p class="text-sm text-gray-500">Payment Method</p>
+            <p class="text-sm text-gray-500 translatable ">Payment Method</p>
             <p class="mt-1 font-medium">Visa •••• 4242</p>
           </div>
         </div>
@@ -169,7 +171,7 @@
         <div class="lg:col-span-2">
           <div class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden">
             <div class="px-6 py-4 border-b border-gray-100 flex justify-between items-center">
-              <h2 class="font-semibold text-gray-900">Recent Orders</h2>
+              <h2 class="font-semibold text-gray-900 translatable ">Recent Orders</h2>
               <a href="./customer.html" class="text-sm text-blue-600 hover:text-blue-800">
                 View All
               </a>
@@ -178,11 +180,11 @@
               <table class="w-full">
                 <thead class="bg-gray-50 text-left">
                   <tr>
-                    <th class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">Order ID</th>
-                    <th class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
-                    <th class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                    <th class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">Amount</th>
-                    <th class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider"></th>
+                    <th class=" translatable px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">Order ID</th>
+                    <th class=" translatable px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+                    <th class=" translatable px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                    <th class=" translatable px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">Amount</th>
+                    <th class=" translatable px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider"></th>
                   </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200">
@@ -219,7 +221,7 @@
                   <tr>
                     <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-900">ORD-12343</td>
                     <td class="px-6 py-4 whitespace-nowrap text-gray-500">Mar 15, 2025</td>
-                    <td class="px-6 py-4 whitespace-nowrap">
+                    <td class="px-6 py-4 whitespace-nowrap translatable ">
                       <span class="inline-flex px-2 py-1 text-xs font-medium rounded-full bg-yellow-100 text-yellow-800">
                         Processing
                       </span>
@@ -240,19 +242,19 @@
         <div>
           <div class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden">
             <div class="px-6 py-4 border-b border-gray-100">
-              <h2 class="font-semibold text-gray-900">Support Tickets</h2>
+              <h2 class="font-semibold text-gray-900 translatable ">Support Tickets</h2>
             </div>
             <div class="divide-y divide-gray-100">
               <div class="p-4">
                 <div class="flex justify-between">
-                  <span class="text-sm font-medium text-gray-500">TKT-7890</span>
+                  <span class="text-sm font-medium text-gray-500 translatable ">TKT-7890</span>
                   <span class="px-2 py-1 text-xs font-medium rounded-full bg-blue-100 text-blue-800">
                     Open
                   </span>
                 </div>
-                <h3 class="font-medium text-gray-900 mt-1">Question about billing</h3>
+                <h3 class="font-medium text-gray-900 mt-1 translatable ">Question about billing</h3>
                 <div class="flex justify-between items-center mt-2">
-                  <span class="text-xs text-gray-500">Updated 1 day ago</span>
+                  <span class="text-xs text-gray-500 translatable ">Updated 1 day ago</span>
                   <a href="/dashboard-customer" class="text-sm text-blue-600 hover:text-blue-800">
                     View
                   </a>
@@ -265,9 +267,9 @@
                     Closed
                   </span>
                 </div>
-                <h3 class="font-medium text-gray-900 mt-1">Product setup issue</h3>
+                <h3 class="font-medium text-gray-900 mt-1 translatable ">Product setup issue</h3>
                 <div class="flex justify-between items-center mt-2">
-                  <span class="text-xs text-gray-500">Updated 1 week ago</span>
+                  <span class="text-xs text-gray-500 translatable ">Updated 1 week ago</span>
                   <a href="/dashboard-customer" class="text-sm text-blue-600 hover:text-blue-800">
                     View
                   </a>
@@ -289,13 +291,13 @@
                 </div>
               </div>
               <div>
-                <h3 class="font-semibold text-blue-900">Need Help?</h3>
-                <p class="mt-1 text-sm text-blue-700">
+                <h3 class="font-semibold text-blue-900 translatable ">Need Help?</h3>
+                <p class="mt-1 text-sm text-blue-700 translatable ">
                   Our support team is available 24/7 to assist with any questions or issues.
                 </p>
                 <div class="mt-4">
                   <a href="./support.html" >
-                  <button class="text-blue-700 border border-blue-200 bg-blue-100 hover:bg-blue-200 py-2 px-4 rounded-md">
+                  <button class=" translatable text-blue-700 border border-blue-200 bg-blue-100 hover:bg-blue-200 py-2 px-4 rounded-md">
                     Contact Support
                   </button>
                 </a>
@@ -359,6 +361,56 @@
       console.log('Logout clicked');
       alert('Logout functionality would go here');
     });
+</script>
+<script>
+    const apiKey = 'AIzaSyAOan6AJhCDRKjC6S8rrhgI9qz16n9AyQo'; // your actual key
+  
+    async function translateText(text, targetLang) {
+      try {
+        const response = await fetch(`https://translation.googleapis.com/language/translate/v2?key=${apiKey}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            q: text,
+            target: targetLang,
+            format: 'text'
+          })
+        });
+  
+        const data = await response.json();
+        return data.data.translations[0].translatedText;
+      } catch (err) {
+        console.error("Translation error:", err);
+        return null;
+      }
+    }
+  
+    async function translatePage(lang) {
+      const elements = document.querySelectorAll('.translatable');
+      for (let el of elements) {
+        const originalText = el.getAttribute('data-original') || el.innerText;
+        el.setAttribute('data-original', originalText);
+        const translatedText = await translateText(originalText, lang);
+        if (translatedText) el.innerText = translatedText;
+      }
+    }
+  
+    document.addEventListener('DOMContentLoaded', () => {
+      const langSelect = document.getElementById('languageSelect');
+      const savedLang = localStorage.getItem('selectedLanguage') || 'en';
+      if (langSelect) langSelect.value = savedLang;
+      translatePage(savedLang);
+  
+      if (langSelect) {
+        langSelect.addEventListener('change', async function () {
+          const selected = this.value;
+          localStorage.setItem('selectedLanguage', selected);
+          translatePage(selected);
+        });
+      }
+    });
   </script>
+
+  
 </body>
 </html>

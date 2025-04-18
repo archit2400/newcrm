@@ -1,6 +1,5 @@
-
-
 <?php
+session_start(); // ← Add this line to start the session
 include 'db_connect.php';
 
 $data = json_decode(file_get_contents("php://input"), true);
@@ -19,6 +18,8 @@ $user = $result->fetch_assoc();
 $response = [];
 
 if ($user && password_verify($password, $user['password'])) {
+  $_SESSION['user_id'] = $user['id']; // ← Store user ID in session
+
   $response['status'] = 'success';
   $response['user'] = [
     'id' => $user['id'],
